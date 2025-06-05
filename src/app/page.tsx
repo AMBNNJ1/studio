@@ -50,7 +50,7 @@ export default function Home() {
     },
   ];
 
-  const displayedModules = allModules.slice(0, 3); // Display first 3 modules on homepage
+  const displayedModules = allModules.slice(0, 3); 
 
   return (
     <AppLayout>
@@ -119,7 +119,7 @@ export default function Home() {
               <div className="relative h-48 w-full">
                 <Image
                   src={module.imagePlaceholder}
-                  alt={`Image for ${module.title} (Path: ${module.imagePlaceholder})`}
+                  alt={`Image for ${module.title.split('–')[1]?.trim() || module.title} (Path: ${module.imagePlaceholder})`}
                   fill
                   style={{ objectFit: 'cover' }}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -141,10 +141,8 @@ export default function Home() {
                 </p>
               </CardContent>
               <div className="p-6 pt-0">
-                {/* Update Link href when individual module pages are ready e.g. /modules/${module.slug} */}
                 <Button asChild variant="outline" className="w-full">
-                   {/* For now, links to # as module detail pages are not yet implemented */}
-                  <Link href={`/modules#${module.slug}`}>View Module</Link>
+                  <Link href={`/modules/${module.slug}`}>View Module</Link>
                 </Button>
               </div>
             </Card>
