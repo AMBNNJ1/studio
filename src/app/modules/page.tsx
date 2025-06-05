@@ -34,8 +34,9 @@ export default function ModulesPage() {
                   <Image
                     src={module.imagePlaceholder}
                     alt={`${module.title} placeholder image`}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     data-ai-hint={module.dataAiHint}
                   />
                 </div>
