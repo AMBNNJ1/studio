@@ -67,7 +67,7 @@ export default function ModuleDetailPage({ params }: Props) {
 
   return (
     <AppLayout>
-      <div className="space-y-20 py-8">
+      <div className="py-8"> {/* Removed space-y-20, relying on mt-* for sections */}
         <header className="space-y-4">
           <Button variant="outline" asChild className="mb-2 text-sm">
             <Link href="/modules">
@@ -79,18 +79,18 @@ export default function ModuleDetailPage({ params }: Props) {
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             {displayTitle}
           </h1>
-          <p className="mt-3 text-lg text-muted-foreground max-w-3xl">
+          <p className="text-lg text-muted-foreground max-w-3xl"> {/* Removed explicit mt-3, space-y-4 on header handles it */}
             {module.description}
           </p>
           <Badge
             variant={module.level === 'Beginner' || module.level === 'Beginner→Intermediate' ? 'secondary' : 'outline'}
-            className="mt-2 py-1 px-3 text-sm rounded-md"
+            className="py-1 px-3 text-sm rounded-md" 
           >
             {module.level}
           </Badge>
         </header>
 
-        <section>
+        <section className="mt-12"> {/* Added mt-12 for separation */}
           <h2 className="font-headline text-3xl font-semibold tracking-tight text-foreground mb-10 border-b pb-5">
             Lessons
           </h2>
@@ -136,7 +136,7 @@ export default function ModuleDetailPage({ params }: Props) {
         </section>
 
         {module.quiz && module.quiz.length > 0 && (
-           <section className="pt-8 border-t border-border">
+           <section className="mt-12 pt-8 border-t border-border"> {/* Added mt-12 for separation */}
             <h2 className="font-headline text-3xl font-semibold tracking-tight text-foreground mb-10 border-b pb-5">
               Quiz
             </h2>
@@ -166,7 +166,7 @@ export default function ModuleDetailPage({ params }: Props) {
                     ) : (
                        <p className="text-sm text-muted-foreground italic pl-8">Options not available for this question yet.</p>
                     )}
-                    {quizItem.answerKey && !quizItem.options.some(o => o.isCorrect) && ( // Show answerKey only if options don't already mark the correct one
+                    {quizItem.answerKey && !quizItem.options.some(o => o.isCorrect) && ( 
                       <div className="mt-4 pt-4 border-t border-border">
                         <p className="text-sm flex items-start">
                           <CheckCircle className="h-4 w-4 text-primary mr-2.5 mt-0.5 flex-shrink-0" />
