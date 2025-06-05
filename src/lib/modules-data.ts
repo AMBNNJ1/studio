@@ -26,8 +26,8 @@ export const allModules: ModuleDefinition[] = [
       },
       // Add 4 more questions for Module 1 later
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
-    dataAiHint: 'chart basics',
+    imagePlaceholder: '/images/module-1-price-action.png', // Updated image path
+    dataAiHint: 'candlestick chart', // Updated data-ai-hint
   },
   {
     id: 'm2',
