@@ -28,7 +28,7 @@ export const allModules: ModuleDefinition[] = [
       },
       // Add 4 more questions for Module 1 later
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
+    imagePlaceholder: '/images/module-1-price-action.png',
     dataAiHint: 'candlestick chart',
   },
   {
@@ -53,7 +53,7 @@ export const allModules: ModuleDefinition[] = [
         answerKey: 'b) probable reversal',
       },
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
+    imagePlaceholder: '/images/module-2-market-structure.png',
     dataAiHint: 'market structure',
   },
   {
@@ -79,7 +79,7 @@ export const allModules: ModuleDefinition[] = [
         answerKey: 'd) all of the above',
       },
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
+    imagePlaceholder: '/images/module-3-order-blocks.png',
     dataAiHint: 'financial order',
   },
   {
@@ -96,7 +96,7 @@ export const allModules: ModuleDefinition[] = [
     quiz: [
       // Sample quiz Q&A was "..." - add specific questions later
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
+    imagePlaceholder: '/images/module-4-imbalances.png',
     dataAiHint: 'price gap',
   },
   {
@@ -113,7 +113,7 @@ export const allModules: ModuleDefinition[] = [
     quiz: [
       // Quiz was "..." - add specific questions later
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
+    imagePlaceholder: '/images/module-5-trading-models.png',
     dataAiHint: 'trading strategy',
   },
   {
@@ -130,7 +130,7 @@ export const allModules: ModuleDefinition[] = [
     quiz: [
       // Quiz was "..." - add specific questions later
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
+    imagePlaceholder: '/images/module-6-risk-management.png',
     dataAiHint: 'risk analysis',
   },
 ];
