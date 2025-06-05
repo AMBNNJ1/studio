@@ -1,5 +1,4 @@
 
-
 import AppLayout from '@/components/layout/app-layout';
 import { allModules } from '@/lib/modules-data';
 import type { ModuleDefinition } from '@/types';
@@ -66,46 +65,45 @@ export default function ModuleDetailPage({ params }: Props) {
   const displayTitle = module.title.split('–')[1]?.trim() || module.title;
   const moduleNumberString = module.title.split('–')[0]?.trim();
 
-
   return (
     <AppLayout>
-      <div className="space-y-10 py-8">
-        <div>
-          <Button variant="outline" asChild className="mb-6 text-sm">
+      <div className="space-y-12 py-8">
+        <header className="space-y-4">
+          <Button variant="outline" asChild className="mb-2 text-sm">
             <Link href="/modules">
               <ChevronLeft className="mr-2 h-4 w-4" />
               All Modules
             </Link>
           </Button>
-          {moduleNumberString && <p className="text-sm font-medium text-primary mb-1">{moduleNumberString}</p>}
+          {moduleNumberString && <p className="text-base font-medium text-primary">{moduleNumberString}</p>}
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             {displayTitle}
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-3xl">
+          <p className="mt-3 text-lg text-muted-foreground max-w-3xl">
             {module.description}
           </p>
           <Badge
             variant={module.level === 'Beginner' || module.level === 'Beginner→Intermediate' ? 'secondary' : 'outline'}
-            className="mt-4 py-1 px-3 text-sm rounded-md"
+            className="mt-2 py-1 px-3 text-sm rounded-md"
           >
             {module.level}
           </Badge>
-        </div>
+        </header>
 
         <section>
-          <h2 className="font-headline text-3xl font-semibold tracking-tight text-foreground mb-8 border-b pb-3">
+          <h2 className="font-headline text-3xl font-semibold tracking-tight text-foreground mb-8 border-b pb-4">
             Lessons
           </h2>
           {module.lessons.length > 0 ? (
             <div className="space-y-6">
               {module.lessons.map((lesson, index) => (
-                <Card key={lesson.id} className="shadow-sm hover:shadow-lg transition-shadow duration-300 ease-in-out rounded-lg overflow-hidden">
-                  <CardHeader className="bg-card">
+                <Card key={lesson.id} className="shadow-sm hover:shadow-lg transition-shadow duration-300 ease-in-out rounded-lg overflow-hidden bg-card">
+                  <CardHeader>
                     <CardTitle className="text-xl font-semibold text-foreground">
                       Lesson {index + 1}: {lesson.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-4">
+                  <CardContent className="pt-2">
                     <CardDescription className="text-base text-muted-foreground mb-4">
                       <strong className="font-medium text-foreground">Key Takeaways:</strong> {lesson.keyTakeaways}
                     </CardDescription>
@@ -129,46 +127,54 @@ export default function ModuleDetailPage({ params }: Props) {
               ))}
             </div>
           ) : (
-            <p className="text-muted-foreground">No lessons available for this module yet.</p>
+            <Card className="rounded-lg shadow-sm">
+              <CardContent className="pt-6">
+                <p className="text-muted-foreground text-center">No lessons available for this module yet.</p>
+              </CardContent>
+            </Card>
           )}
         </section>
 
         {module.quiz && module.quiz.length > 0 && (
-           <section className="mt-12 pt-8 border-t">
-            <h2 className="font-headline text-3xl font-semibold tracking-tight text-foreground mb-8 border-b pb-3">
+           <section className="mt-16 pt-8 border-t">
+            <h2 className="font-headline text-3xl font-semibold tracking-tight text-foreground mb-8 border-b pb-4">
               Quiz
             </h2>
-            <Card className="shadow-sm rounded-lg overflow-hidden">
-              <CardHeader className="bg-card">
+            <Card className="shadow-sm rounded-lg overflow-hidden bg-card">
+              <CardHeader>
                 <CardTitle className="text-xl font-semibold text-foreground">Test Your Knowledge</CardTitle>
-                <CardDescription className="text-base">
+                <CardDescription className="text-base text-muted-foreground">
                   Check your understanding of this module. ({module.quiz.length} {module.quiz.length === 1 ? 'question' : 'questions'})
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-4 space-y-6">
                 {module.quiz.map((quizItem, index) => (
-                  <div key={index} className="p-4 border rounded-md bg-background shadow">
-                    <p className="font-medium text-foreground mb-2">{index + 1}. {quizItem.question}</p>
+                  <div key={index} className="p-5 border rounded-md bg-background shadow-sm space-y-3">
+                    <p className="font-medium text-lg text-foreground">{index + 1}. {quizItem.question}</p>
                     {quizItem.options.length > 0 ? (
-                      <ul className="list-disc list-inside text-muted-foreground space-y-1 pl-4 mb-3">
+                      <ul className="list-disc list-inside text-muted-foreground space-y-1.5 pl-5">
                         {quizItem.options.map((opt, i) => (
-                          <li key={i}>{opt.text} {opt.isCorrect ? <span className="text-xs text-green-600 font-semibold">(Correct)</span> : ''}</li>
+                          <li key={i} className={opt.isCorrect ? 'text-foreground' : ''}>
+                            {opt.text} {opt.isCorrect && <Badge variant="secondary" className="ml-2 text-xs">Correct</Badge>}
+                          </li>
                         ))}
                       </ul>
                     ) : (
-                       <p className="text-sm text-muted-foreground mb-3 italic">Options not available for this question yet.</p>
+                       <p className="text-sm text-muted-foreground italic">Options not available for this question yet.</p>
                     )}
                     {quizItem.answerKey && (
-                      <p className="text-sm mt-3 pt-3 border-t">
-                        <strong className="text-foreground">Answer:</strong> {quizItem.answerKey}
-                      </p>
+                      <div className="mt-3 pt-3 border-t">
+                        <p className="text-sm">
+                          <strong className="text-foreground">Answer:</strong> <span className="text-muted-foreground">{quizItem.answerKey}</span>
+                        </p>
+                      </div>
                     )}
                      {!quizItem.answerKey && !quizItem.options.some(o => o.isCorrect) && (
                        <p className="text-sm mt-3 pt-3 border-t text-muted-foreground italic">Answer key not provided for this question.</p>
                     )}
                   </div>
                 ))}
-                 <Button variant="outline" disabled className="mt-4">Start Interactive Quiz (Coming Soon)</Button>
+                 <Button variant="outline" disabled className="mt-6">Start Interactive Quiz (Coming Soon)</Button>
               </CardContent>
             </Card>
           </section>
