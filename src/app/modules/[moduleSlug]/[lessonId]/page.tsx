@@ -44,7 +44,7 @@ export async function generateStaticParams() {
 const TermDefinitionTable = ({ items }: { items: { term: string; meaning: string; visual: string }[] }) => (
   <div className="my-6 space-y-4">
     {items.map((item, index) => (
-      <div key={index} className="grid grid-cols-1 md:grid-cols-[1fr_3fr_auto] gap-2 p-3 border rounded-md bg-card">
+      <div key={index} className="grid grid-cols-1 md:grid-cols-[1fr_3fr_auto] gap-2 p-4 border rounded-md bg-card">
         <div className="font-semibold text-foreground">{item.term}</div>
         <div className="text-muted-foreground">{item.meaning}</div>
         <div className="text-2xl hidden md:block">{item.visual}</div>
@@ -56,13 +56,13 @@ const TermDefinitionTable = ({ items }: { items: { term: string; meaning: string
 
 const ComparisonTable = ({ items }: { items: { type: string; retail: string; ict: string }[] }) => (
   <div className="my-6 space-y-4">
-     <div className="hidden md:grid grid-cols-[1fr_2fr_2fr] gap-x-4 gap-y-2 p-3 rounded-md bg-card border mb-2">
+     <div className="hidden md:grid grid-cols-[1fr_2fr_2fr] gap-x-4 gap-y-2 p-4 rounded-md bg-card border mb-2">
         <div className="font-semibold text-foreground">Question Type</div>
         <div className="font-semibold text-foreground">Retail Approach</div>
         <div className="font-semibold text-foreground">ICT Approach</div>
       </div>
     {items.map((item, index) => (
-      <div key={index} className="grid grid-cols-1 md:grid-cols-[1fr_2fr_2fr] gap-x-4 gap-y-2 p-3 border rounded-md bg-card">
+      <div key={index} className="grid grid-cols-1 md:grid-cols-[1fr_2fr_2fr] gap-x-4 gap-y-2 p-4 border rounded-md bg-card">
         <div className="md:hidden font-semibold text-foreground">Question Type:</div>
         <div className="text-muted-foreground italic md:not-italic">{item.type}</div>
         <div className="md:hidden font-semibold text-foreground mt-2">Retail Approach:</div>
@@ -143,7 +143,7 @@ export default function LessonPage({ params }: Props) {
           )}
         </div>
 
-        <article className="prose prose-lg dark:prose-invert max-w-none space-y-6">
+        <article className="prose prose-lg dark:prose-invert max-w-none space-y-8">
           {isModule1Lesson1 ? (
             <>
               <p className="text-base italic text-muted-foreground">Beginner-friendly edition – no prior knowledge assumed</p>
