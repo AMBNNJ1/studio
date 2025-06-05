@@ -26,8 +26,8 @@ export const allModules: ModuleDefinition[] = [
       },
       // Add 4 more questions for Module 1 later
     ],
-    imagePlaceholder: '/images/module-1-price-action.png', // Updated image path
-    dataAiHint: 'candlestick chart', // Updated data-ai-hint
+    imagePlaceholder: '/images/module-1-price-action.png',
+    dataAiHint: 'candlestick chart',
   },
   {
     id: 'm2',
@@ -51,8 +51,8 @@ export const allModules: ModuleDefinition[] = [
         answerKey: 'b) probable reversal',
       },
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
-    dataAiHint: 'market graph',
+    imagePlaceholder: '/images/module-2-market-structure.png', // Updated image path for Module 2
+    dataAiHint: 'market structure', // Updated data-ai-hint for Module 2
   },
   {
     id: 'm3',
