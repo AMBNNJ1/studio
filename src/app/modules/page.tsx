@@ -33,12 +33,12 @@ export default function ModulesPage() {
                 <div className="relative h-48 w-full">
                   <Image
                     src={module.imagePlaceholder}
-                    alt={`Placeholder image for ${module.title.split('–')[1]?.trim() || module.title}`}
+                    alt={`Image for ${module.title.split('–')[1]?.trim() || module.title}`}
                     fill
                     style={{ objectFit: 'cover' }}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     data-ai-hint={module.dataAiHint}
-                    priority={index < 3}
+                    priority={index < 3} // Prioritize loading for the first 3 images
                   />
                 </div>
                 <CardHeader>
