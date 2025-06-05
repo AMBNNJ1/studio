@@ -5,7 +5,7 @@ import type { ModuleDefinition } from '@/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertTriangle, ChevronLeft } from 'lucide-react';
+import { AlertTriangle, ChevronLeft, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata, ResolvingMetadata } from 'next';
 
@@ -108,10 +108,18 @@ export default function ModuleDetailPage({ params }: Props) {
                     <CardDescription className="text-base text-muted-foreground mb-4">
                       <strong className="font-medium text-foreground">Key Takeaways:</strong> {lesson.keyTakeaways}
                     </CardDescription>
-                    {/* Placeholder for actual lesson link/button */}
-                    <Button variant="secondary" disabled className="mt-2">
-                      Watch Lesson (Coming Soon)
-                    </Button>
+                    {module.slug === 'price-action-foundations' && lesson.id === 'l1' ? (
+                      <Button asChild variant="secondary" className="mt-2">
+                        <Link href={`/modules/${module.slug}/${lesson.id}`}>
+                          <BookOpen className="mr-2 h-4 w-4" />
+                          View Lesson
+                        </Link>
+                      </Button>
+                    ) : (
+                      <Button variant="secondary" disabled className="mt-2">
+                        View Lesson (Coming Soon)
+                      </Button>
+                    )}
                   </CardContent>
                 </Card>
               ))}
@@ -165,3 +173,5 @@ export default function ModuleDetailPage({ params }: Props) {
     </AppLayout>
   );
 }
+
+    
