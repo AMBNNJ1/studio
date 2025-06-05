@@ -86,33 +86,17 @@ export default function Home() {
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {displayedModules.map((module, index) => (
             <Card key={module.id} className="flex flex-col overflow-hidden rounded-lg border bg-card shadow-sm hover:shadow-md transition-shadow duration-200">
-              {/* === Diagnostic Image Rendering for Module 1 === */}
-              {index === 0 && module.id === 'm1' ? (
-                <div className="w-full h-48 flex items-center justify-center overflow-hidden bg-muted/30">
-                  <Image
-                    src="/images/module-1-price-action.png" 
-                    alt={`Image for ${module.title.split('–')[1]?.trim() || module.title}`}
-                    width={300} 
-                    height={200} 
-                    style={{ objectFit: 'contain' }} 
-                    data-ai-hint={module.dataAiHint}
-                    priority 
-                  />
-                </div>
-              ) : (
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={module.imagePlaceholder}
-                    alt={`Image for ${module.title.split('–')[1]?.trim() || module.title}`}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    data-ai-hint={module.dataAiHint}
-                    priority={index < 2} 
-                  />
-                </div>
-              )}
-              {/* === End Diagnostic Image Rendering === */}
+              <div className="relative h-48 w-full">
+                <Image
+                  src={module.imagePlaceholder}
+                  alt={`Image for ${module.title.split('–')[1]?.trim() || module.title}`}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  data-ai-hint={module.dataAiHint}
+                  priority={index < 2}
+                />
+              </div>
               <CardHeader>
                  <div className="flex items-center justify-between">
                     <CardTitle className="font-headline text-xl group-hover:text-primary transition-colors">{module.title.split('–')[1]?.trim() || module.title}</CardTitle>
