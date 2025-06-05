@@ -30,33 +30,17 @@ export default function ModulesPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {allModules.map((module, index) => (
               <Card key={module.id} className="flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                {/* Diagnostic change for the third card (index 2) */}
-                {index === 2 ? (
-                  <div className="flex justify-center items-center h-48 w-full bg-muted"> {/* Added a wrapper to maintain card structure */}
-                    <Image
-                      src="https://placehold.co/300x200.png" // Hardcoded src for testing
-                      alt={`Test Image for ${module.title.split('–')[1]?.trim() || module.title}`}
-                      width={300} // Explicit width
-                      height={200} // Explicit height
-                      data-ai-hint={module.dataAiHint}
-                      // priority prop removed for this test
-                    />
-                  </div>
-                ) : (
-                  <div className="relative h-48 w-full">
-                    <Image
-                      // For local images like '/images/module-1-price-action.png',
-                      // ensure the file exists at 'public/images/module-1-price-action.png'
-                      src={module.imagePlaceholder}
-                      alt={`Image for ${module.title.split('–')[1]?.trim() || module.title} (Path: ${module.imagePlaceholder})`}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      data-ai-hint={module.dataAiHint}
-                      priority={index < 3}
-                    />
-                  </div>
-                )}
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={module.imagePlaceholder}
+                    alt={`Placeholder image for ${module.title.split('–')[1]?.trim() || module.title}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    data-ai-hint={module.dataAiHint}
+                    priority={index < 3}
+                  />
+                </div>
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="font-headline text-xl">{module.title.split('–')[1]?.trim() || module.title}</CardTitle>
