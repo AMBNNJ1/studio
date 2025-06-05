@@ -133,24 +133,30 @@ export default function ModuleDetailPage({ params }: Props) {
                   Check your understanding of this module. ({module.quiz.length} {module.quiz.length === 1 ? 'question' : 'questions'})
                 </CardDescription>
               </CardHeader>
-              <CardContent className="pt-4">
-                {/* Example: Displaying the first quiz question for context */}
-                {module.quiz[0] && (
-                  <div className="mb-4 p-4 border rounded-md bg-background">
-                    <p className="font-medium text-foreground mb-2">{module.quiz[0].question}</p>
-                    <ul className="list-disc list-inside text-muted-foreground space-y-1 pl-4">
-                      {module.quiz[0].options.map((opt, i) => (
-                        <li key={i}>{opt.text}</li>
-                      ))}
-                    </ul>
-                    {module.quiz[0].answerKey && (
-                      <p className="text-sm mt-3 pt-2 border-t">
-                        <strong className="text-foreground">Sample Answer:</strong> {module.quiz[0].answerKey}
+              <CardContent className="pt-4 space-y-6">
+                {module.quiz.map((quizItem, index) => (
+                  <div key={index} className="p-4 border rounded-md bg-background shadow">
+                    <p className="font-medium text-foreground mb-2">{index + 1}. {quizItem.question}</p>
+                    {quizItem.options.length > 0 ? (
+                      <ul className="list-disc list-inside text-muted-foreground space-y-1 pl-4 mb-3">
+                        {quizItem.options.map((opt, i) => (
+                          <li key={i}>{opt.text} {opt.isCorrect ? <span className="text-xs text-green-600 font-semibold">(Correct)</span> : ''}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                       <p className="text-sm text-muted-foreground mb-3 italic">Options not available for this question yet.</p>
+                    )}
+                    {quizItem.answerKey && (
+                      <p className="text-sm mt-3 pt-3 border-t">
+                        <strong className="text-foreground">Answer:</strong> {quizItem.answerKey}
                       </p>
                     )}
+                     {!quizItem.answerKey && !quizItem.options.some(o => o.isCorrect) && (
+                       <p className="text-sm mt-3 pt-3 border-t text-muted-foreground italic">Answer key not provided for this question.</p>
+                    )}
                   </div>
-                )}
-                 <Button variant="outline" disabled className="mt-2">Start Quiz (Coming Soon)</Button>
+                ))}
+                 <Button variant="outline" disabled className="mt-4">Start Interactive Quiz (Coming Soon)</Button>
               </CardContent>
             </Card>
           </section>
