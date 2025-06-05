@@ -28,16 +28,17 @@ export default function ModulesPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {allModules.map((module) => (
+            {allModules.map((module, index) => (
               <Card key={module.id} className="flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="relative h-48 w-full">
                   <Image
                     src={module.imagePlaceholder}
-                    alt={`${module.title} placeholder image`}
+                    alt={`Image for ${module.title} (Path: ${module.imagePlaceholder})`}
                     fill
                     style={{ objectFit: 'cover' }}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     data-ai-hint={module.dataAiHint}
+                    priority={index === 0}
                   />
                 </div>
                 <CardHeader>

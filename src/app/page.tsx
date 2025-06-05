@@ -119,7 +119,7 @@ export default function Home() {
               <div className="relative h-48 w-full">
                 <Image
                   src={module.imagePlaceholder}
-                  alt={`${module.title} placeholder image`}
+                  alt={`Image for ${module.title} (Path: ${module.imagePlaceholder})`}
                   fill
                   style={{ objectFit: 'cover' }}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
