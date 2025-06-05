@@ -12,6 +12,8 @@ export const allModules: ModuleDefinition[] = [
       { id: 'l1', title: 'What Is ICT Trading?', keyTakeaways: 'History of Inner Circle Trader methodology; why liquidity matters more than indicators.', videoUrl: '/videos/m1_l1_intro.mp4' },
       { id: 'l2', title: 'Anatomy of a Candlestick', keyTakeaways: 'Open, high, low, close; wicks = liquidity probes.', videoUrl: '/videos/m1_l2_candles.mp4' },
       { id: 'l3', title: 'Trading Sessions & Time-of-Day', keyTakeaways: 'Asia, London, New-York killzones; PD Arrays intro.', videoUrl: '/videos/m1_l3_sessions.mp4' },
+      { id: 'l4', title: 'Candle Sentiment & Reversals', keyTakeaways: 'How body fill, wick length, and relative position signal bullish vs. bearish intent; basic pin-bar and engulfing patterns.', videoUrl: '/videos/m1_l4_sentiment.mp4' },
+      { id: 'l5', title: 'Support & Resistance Basics', keyTakeaways: 'Spot swing highs/lows and mark simple ICT PD Arrays acting as support or resistance.', videoUrl: '/videos/m1_l5_support_resist.mp4' },
     ],
     quiz: [
       {
@@ -51,8 +53,8 @@ export const allModules: ModuleDefinition[] = [
         answerKey: 'b) probable reversal',
       },
     ],
-    imagePlaceholder: '/images/module-2-market-structure.png', // Updated image path for Module 2
-    dataAiHint: 'market structure', // Updated data-ai-hint for Module 2
+    imagePlaceholder: '/images/module-2-market-structure.png',
+    dataAiHint: 'market structure',
   },
   {
     id: 'm3',
