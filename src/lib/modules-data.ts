@@ -28,7 +28,7 @@ export const allModules: ModuleDefinition[] = [
       },
       // Add 4 more questions for Module 1 later
     ],
-    imagePlaceholder: '/images/module-1-price-action.png',
+    imagePlaceholder: '/images/module-1-price-action.png', // Path confirmed
     dataAiHint: 'candlestick chart',
   },
   {
