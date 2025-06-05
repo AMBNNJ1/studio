@@ -228,7 +228,7 @@ export default function LessonPage({ params }: Props) {
               </Card>
             </>
           ) : (
-            <div> {/* Changed from Card to a simple div with prose-friendly elements */}
+            <div>
               <h2 className="font-semibold text-2xl text-foreground border-b pb-2">Lesson Content</h2>
               <p className="text-muted-foreground">Detailed content for this lesson is coming soon. Please check back later.</p>
               <p className="mt-4"><strong className="text-foreground">Key Takeaways:</strong> {lesson.keyTakeaways}</p>
@@ -239,5 +239,3 @@ export default function LessonPage({ params }: Props) {
     </AppLayout>
   );
 }
-
-    
