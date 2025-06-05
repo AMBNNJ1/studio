@@ -53,7 +53,7 @@ export const allModules: ModuleDefinition[] = [
         answerKey: 'b) probable reversal',
       },
     ],
-    imagePlaceholder: '/images/module-2-market-structure.png',
+    imagePlaceholder: '/images/module-2-price-action.png',
     dataAiHint: 'market structure',
   },
   {
@@ -79,7 +79,7 @@ export const allModules: ModuleDefinition[] = [
         answerKey: 'd) all of the above',
       },
     ],
-    imagePlaceholder: '/images/module-3-order-blocks.png',
+    imagePlaceholder: '/images/module-3-price-action.png',
     dataAiHint: 'financial order',
   },
   {
@@ -96,7 +96,7 @@ export const allModules: ModuleDefinition[] = [
     quiz: [
       // Sample quiz Q&A was "..." - add specific questions later
     ],
-    imagePlaceholder: '/images/module-4-imbalances.png',
+    imagePlaceholder: 'https://placehold.co/600x400.png',
     dataAiHint: 'price gap',
   },
   {
@@ -113,7 +113,7 @@ export const allModules: ModuleDefinition[] = [
     quiz: [
       // Quiz was "..." - add specific questions later
     ],
-    imagePlaceholder: '/images/module-5-trading-models.png',
+    imagePlaceholder: 'https://placehold.co/600x400.png',
     dataAiHint: 'trading strategy',
   },
   {
@@ -130,7 +130,7 @@ export const allModules: ModuleDefinition[] = [
     quiz: [
       // Quiz was "..." - add specific questions later
     ],
-    imagePlaceholder: '/images/module-6-risk-management.png',
+    imagePlaceholder: 'https://placehold.co/600x400.png',
     dataAiHint: 'risk analysis',
   },
 ];
