@@ -69,37 +69,7 @@ export default function Home() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button asChild variant="ghost" size="lg">
-              <Link href="/glossary">Explore Glossary</Link>
-            </Button>
           </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24">
-        <div className="text-center mb-12">
-          <Award className="mx-auto h-12 w-12 text-primary mb-4" />
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Why Choose ICT Academy Lite?
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore the features that make learning effective and engaging, tailored for your trading success.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
-            <Card key={index} className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300" data-ai-hint={feature.dataAiHint}>
-              <CardHeader>
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                  {feature.icon}
-                </div>
-                <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </CardContent>
-            </Card>
-          ))}
         </div>
       </section>
 
@@ -155,6 +125,33 @@ export default function Home() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <div className="text-center mb-12">
+          <Award className="mx-auto h-12 w-12 text-primary mb-4" />
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Why Choose ICT Academy Lite?
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Explore the features that make learning effective and engaging, tailored for your trading success.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature, index) => (
+            <Card key={index} className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300" data-ai-hint={feature.dataAiHint}>
+              <CardHeader>
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  {feature.icon}
+                </div>
+                <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
 
