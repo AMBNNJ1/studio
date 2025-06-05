@@ -1,11 +1,13 @@
 
 import AppLayout from '@/components/layout/app-layout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from 'next/link';
-import { Award, Target, PlaySquare, FileQuestion, Users, ArrowRight } from 'lucide-react';
+import { Award, Target, PlaySquare, FileQuestion, Users, ArrowRight, BookCopy } from 'lucide-react';
 import Image from 'next/image';
+import { allModules } from '@/lib/modules-data';
+import { Badge } from '@/components/ui/badge';
 
 export default function Home() {
   const features = [
@@ -48,9 +50,11 @@ export default function Home() {
     },
   ];
 
+  const displayedModules = allModules.slice(0, 3); // Display first 3 modules on homepage
+
   return (
     <AppLayout>
-      <section className="py-16 text-center md:py-24 lg:py-32 rounded-lg shadow-sm">
+      <section className="py-16 text-center md:py-24 lg:py-32">
         <div className="container mx-auto max-w-3xl px-4">
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
             Master ICT Trading Concepts
@@ -59,7 +63,7 @@ export default function Home() {
             Unlock the secrets of Inner Circle Trader methodology with concise lessons, engaging videos, and interactive quizzes. Start your journey to trading proficiency today.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-4">
-            <Button asChild size="lg" variant="secondary">
+            <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90">
               <Link href="/modules">
                 Start Learning
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -99,33 +103,59 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 rounded-lg">
-        <div className="text-center">
+      <section className="py-16 md:py-24">
+        <div className="text-center mb-12">
+          <BookCopy className="mx-auto h-12 w-12 text-primary mb-4" />
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Our Modules
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
             Dive into curated learning paths designed to build your ICT knowledge step-by-step.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 3 }).map((_, index) => (
-            <div key={index} className="rounded-lg border bg-card p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
-              <div className="mb-4 h-40 w-full rounded bg-muted">
-                <Image 
-                  src="https://placehold.co/600x400.png" 
-                  alt={`Module ${index + 1} Placeholder`} 
-                  width={600}
-                  height={400}
-                  className="h-full w-full object-cover rounded"
-                  data-ai-hint="course abstract"
+          {displayedModules.map((module) => (
+            <Card key={module.id} className="flex flex-col overflow-hidden rounded-lg border bg-card shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="relative h-48 w-full">
+                <Image
+                  src={module.imagePlaceholder}
+                  alt={`${module.title} placeholder image`}
+                  layout="fill"
+                  objectFit="cover"
+                  data-ai-hint={module.dataAiHint}
                 />
               </div>
-              <h3 className="font-headline text-xl font-semibold text-foreground">Module {index + 1} Title</h3>
-              <p className="mt-2 text-sm text-muted-foreground">A brief description of what this module covers. Get ready to learn key concepts.</p>
-              <Button variant="outline" className="mt-4 w-full">View Module</Button>
-            </div>
+              <CardHeader>
+                 <div className="flex items-center justify-between">
+                    <CardTitle className="font-headline text-xl group-hover:text-primary transition-colors">{module.title.split('–')[1]?.trim() || module.title}</CardTitle>
+                    <Badge variant={module.level === 'Beginner' || module.level === 'Beginner→Intermediate' ? 'secondary' : 'outline'} className="whitespace-nowrap">
+                      {module.level}
+                    </Badge>
+                  </div>
+                  <CardDescription className="text-xs text-muted-foreground pt-1">{module.title.split('–')[0]?.trim()}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <p className="text-sm text-muted-foreground line-clamp-3">
+                  {module.description}
+                </p>
+              </CardContent>
+              <div className="p-6 pt-0">
+                {/* Update Link href when individual module pages are ready e.g. /modules/${module.slug} */}
+                <Button asChild variant="outline" className="w-full">
+                   {/* For now, links to # as module detail pages are not yet implemented */}
+                  <Link href={`/modules#${module.slug}`}>View Module</Link>
+                </Button>
+              </div>
+            </Card>
           ))}
+        </div>
+         <div className="mt-12 text-center">
+          <Button asChild size="lg" variant="secondary">
+            <Link href="/modules">
+              Explore All Modules
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
         </div>
       </section>
 
