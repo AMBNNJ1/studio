@@ -1,8 +1,53 @@
+
 import AppLayout from '@/components/layout/app-layout';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from 'next/link';
+import { Award, Target, PlaySquare, FileQuestion, Users, Star } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Home() {
+  const features = [
+    {
+      icon: <Target className="h-10 w-10 text-primary" />,
+      title: "Focused ICT Curriculum",
+      description: "Master specific ICT concepts with our targeted lessons and avoid information overload.",
+      dataAiHint: "education focus"
+    },
+    {
+      icon: <PlaySquare className="h-10 w-10 text-primary" />,
+      title: "Engaging Video Lessons",
+      description: "Learn through high-quality video content that breaks down complex topics into understandable segments.",
+      dataAiHint: "video play"
+    },
+    {
+      icon: <FileQuestion className="h-10 w-10 text-primary" />,
+      title: "Interactive Quizzes",
+      description: "Test your understanding and reinforce learning with interactive quizzes after each module.",
+      dataAiHint: "quiz test"
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote: "The concise lessons and practical examples significantly improved my understanding of market structure. Highly recommended!",
+      author: "Alex P.",
+      role: "Aspiring Trader",
+      avatarUrl: "https://placehold.co/100x100.png",
+      avatarFallback: "AP",
+      dataAiHint: "person portrait"
+    },
+    {
+      quote: "I finally grasp Fair Value Gaps thanks to this platform. The AI glossary is a game-changer for quick lookups.",
+      author: "Maria K.",
+      role: "Day Trader",
+      avatarUrl: "https://placehold.co/100x100.png",
+      avatarFallback: "MK",
+      dataAiHint: "person happy"
+    },
+  ];
+
   return (
     <AppLayout>
       <section className="py-16 text-center md:py-24 lg:py-32 bg-accent/30 rounded-lg shadow-sm">
@@ -14,7 +59,7 @@ export default function Home() {
             Unlock the secrets of Inner Circle Trader methodology with concise lessons, engaging videos, and interactive quizzes. Start your journey to trading proficiency today.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button asChild size="lg" className="bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
               <Link href="/modules">Start Learning</Link>
             </Button>
             <Button asChild variant="ghost" size="lg">
@@ -25,6 +70,33 @@ export default function Home() {
       </section>
 
       <section className="py-16 md:py-24">
+        <div className="text-center mb-12">
+          <Award className="mx-auto h-12 w-12 text-primary mb-4" />
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Why Choose ICT Academy Lite?
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Explore the features that make learning effective and engaging, tailored for your trading success.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature, index) => (
+            <Card key={index} className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300" data-ai-hint={feature.dataAiHint}>
+              <CardHeader>
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  {feature.icon}
+                </div>
+                <CardTitle className="font-headline text-xl">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 bg-secondary/30 rounded-lg">
         <div className="text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Our Modules
@@ -33,13 +105,18 @@ export default function Home() {
             Dive into curated learning paths designed to build your ICT knowledge step-by-step.
           </p>
         </div>
-        {/* Placeholder for Module Grid */}
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 3 }).map((_, index) => (
-            <div key={index} className="rounded-lg border bg-card p-6 shadow-sm" data-ai-hint="trading course">
-              <div className="mb-4 h-40 w-full rounded bg-muted data-[ai-hint='abstract lines']">
-                {/* Replace with next/image later */}
-                <img src={`https://placehold.co/600x400.png? সিরিয়াল=${index + 1}`} alt={`Module ${index + 1} Placeholder`} className="h-full w-full object-cover rounded"/>
+            <div key={index} className="rounded-lg border bg-card p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="mb-4 h-40 w-full rounded bg-muted">
+                <Image 
+                  src="https://placehold.co/600x400.png" 
+                  alt={`Module ${index + 1} Placeholder`} 
+                  width={600}
+                  height={400}
+                  className="h-full w-full object-cover rounded"
+                  data-ai-hint="course abstract"
+                />
               </div>
               <h3 className="font-headline text-xl font-semibold text-foreground">Module {index + 1} Title</h3>
               <p className="mt-2 text-sm text-muted-foreground">A brief description of what this module covers. Get ready to learn key concepts.</p>
@@ -48,6 +125,48 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <section className="py-16 md:py-24">
+        <div className="text-center mb-12">
+          <Users className="mx-auto h-12 w-12 text-primary mb-4" />
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Hear From Our Learners
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Discover how ICT Academy Lite has helped traders like you achieve their learning goals.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300" data-ai-hint={testimonial.dataAiHint}>
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-4">
+                  <Avatar className="h-16 w-16 border-2 border-primary">
+                    <AvatarImage src={testimonial.avatarUrl} alt={testimonial.author} />
+                    <AvatarFallback>{testimonial.avatarFallback}</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <blockquote className="text-lg italic text-foreground before:content-['“'] after:content-['”']">
+                      {testimonial.quote}
+                    </blockquote>
+                    <p className="mt-4 font-semibold text-primary">{testimonial.author}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
+                </div>
+                 {/* Optional: Add star rating if desired
+                <div className="mt-4 flex items-center">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                */}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
     </AppLayout>
   );
 }
+
+    
