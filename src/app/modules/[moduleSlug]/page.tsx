@@ -1,4 +1,5 @@
 
+
 import AppLayout from '@/components/layout/app-layout';
 import { allModules } from '@/lib/modules-data';
 import type { ModuleDefinition } from '@/types';
@@ -176,3 +177,5 @@ export default function ModuleDetailPage({ params }: Props) {
     </AppLayout>
   );
 }
+
+    
