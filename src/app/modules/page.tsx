@@ -38,16 +38,19 @@ export default function ModulesPage() {
                     style={{ objectFit: 'cover' }}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     data-ai-hint={module.dataAiHint}
-                    priority={index === 0}
+                    priority={index === 0} 
                   />
                 </div>
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="font-headline text-xl">{module.title}</CardTitle>
+                    <CardTitle className="font-headline text-xl">{module.title.split('–')[1]?.trim() || module.title}</CardTitle>
                     <Badge variant={module.level === 'Beginner' || module.level === 'Beginner→Intermediate' ? 'secondary' : 'outline'} className="whitespace-nowrap">
                       {module.level}
                     </Badge>
                   </div>
+                  {module.title.includes('–') && (
+                    <CardDescription className="text-xs text-muted-foreground pt-1">{module.title.split('–')[0]?.trim()}</CardDescription>
+                  )}
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <CardDescription className="text-sm text-muted-foreground">
