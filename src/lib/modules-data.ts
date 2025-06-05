@@ -96,7 +96,7 @@ export const allModules: ModuleDefinition[] = [
     quiz: [
       // Sample quiz Q&A was "..." - add specific questions later
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
+    imagePlaceholder: '/images/module-4-price-action.png',
     dataAiHint: 'price gap',
   },
   {
@@ -113,7 +113,7 @@ export const allModules: ModuleDefinition[] = [
     quiz: [
       // Quiz was "..." - add specific questions later
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
+    imagePlaceholder: '/images/module-5-price-action.png',
     dataAiHint: 'trading strategy',
   },
   {
@@ -130,7 +130,7 @@ export const allModules: ModuleDefinition[] = [
     quiz: [
       // Quiz was "..." - add specific questions later
     ],
-    imagePlaceholder: 'https://placehold.co/600x400.png',
+    imagePlaceholder: '/images/module-6-price-action.png',
     dataAiHint: 'risk analysis',
   },
 ];
