@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from 'next/link';
-import { Award, Target, PlaySquare, FileQuestion, Users, Star } from 'lucide-react';
+import { Award, Target, PlaySquare, FileQuestion, Users, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Home() {
@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <AppLayout>
-      <section className="py-16 text-center md:py-24 lg:py-32 bg-accent/30 rounded-lg shadow-sm">
+      <section className="py-16 text-center md:py-24 lg:py-32 rounded-lg shadow-sm">
         <div className="container mx-auto max-w-3xl px-4">
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
             Master ICT Trading Concepts
@@ -58,9 +58,12 @@ export default function Home() {
           <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl">
             Unlock the secrets of Inner Circle Trader methodology with concise lessons, engaging videos, and interactive quizzes. Start your journey to trading proficiency today.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button asChild size="lg" className="bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-              <Link href="/modules">Start Learning</Link>
+          <div className="mt-10 flex items-center justify-center gap-x-4">
+            <Button asChild size="lg" variant="secondary">
+              <Link href="/modules">
+                Start Learning
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
             <Button asChild variant="ghost" size="lg">
               <Link href="/glossary">Explore Glossary</Link>
@@ -96,7 +99,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-secondary/30 rounded-lg">
+      <section className="py-16 md:py-24 rounded-lg">
         <div className="text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Our Modules
@@ -153,13 +156,6 @@ export default function Home() {
                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                   </div>
                 </div>
-                 {/* Optional: Add star rating if desired
-                <div className="mt-4 flex items-center">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                */}
               </CardContent>
             </Card>
           ))}
@@ -168,5 +164,3 @@ export default function Home() {
     </AppLayout>
   );
 }
-
-    
