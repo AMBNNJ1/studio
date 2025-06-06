@@ -114,7 +114,7 @@ export default function LessonPage({ params }: Props) {
 
   return (
     <AppLayout>
-      <div className="space-y-10 py-8">
+      <div className="space-y-14 py-12 md:space-y-20 md:py-16">
         <div>
           <Button variant="outline" asChild className="mb-6 text-sm">
             <Link href={`/modules/${module.slug}`}>
@@ -143,7 +143,7 @@ export default function LessonPage({ params }: Props) {
           )}
         </div>
 
-        <article className="prose prose-lg dark:prose-invert max-w-none space-y-8">
+        <article className="prose prose-lg dark:prose-invert max-w-none space-y-8 md:space-y-12">
           {isModule1Lesson1 ? (
             <>
               <p className="text-base italic text-muted-foreground">Beginner-friendly edition – no prior knowledge assumed</p>

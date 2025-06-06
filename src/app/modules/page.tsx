@@ -58,8 +58,8 @@ export default function ModulesPage() {
                   </CardDescription>
                 </CardContent>
                 <div className="p-6 pt-0">
-                  <Button asChild variant="outline" className="w-full">
-                    <Link href={`/modules/${module.slug}`}>View Module</Link>
+                  <Button asChild className="w-full bg-black text-white hover:bg-black/80">
+                    <Link href={`/modules/${module.slug}`}>Start</Link>
                   </Button>
                 </div>
               </Card>
