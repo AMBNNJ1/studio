@@ -99,7 +99,10 @@ export default function LessonPage({ params }: Props) {
     );
   }
 
-  const isModule1Lesson1 = module.slug === 'price-action-foundations' && lesson.id === 'l1';
+  const isModule1Lesson1 =
+    module.slug === 'price-action-foundations' && lesson.id === 'l1';
+  const isModule2Lesson1 =
+    module.slug === 'market-structure-liquidity' && lesson.id === 'l1';
 
   const termDefinitions = [
     { term: 'Liquidity', meaning: 'Money that can quickly change hands. In trading this means clusters of pending orders waiting to be filled.', visual: '💧' },
@@ -225,6 +228,209 @@ export default function LessonPage({ params }: Props) {
                 <CardContent>
                   <p className="text-muted-foreground">You’ll zoom into each candle part so these ideas become crystal clear. See you there! 👋</p>
                 </CardContent>
+              </Card>
+            </>
+          ) : isModule2Lesson1 ? (
+            <>
+              <p>
+                Welcome to the foundation of technical analysis. Before you can
+                understand advanced concepts like liquidity, you first need to
+                learn how to read the market&apos;s language. Market structure is
+                the &quot;skeleton&quot; of price movement. By identifying its
+                patterns, you take the first and most critical step toward
+                understanding market direction and anticipating future moves.
+              </p>
+              <p>
+                <strong>Objective:</strong> At the end of this lesson, you will be
+                able to identify swing points on a chart and differentiate
+                between a trend-continuing Break of Structure (BOS) and a
+                potential trend-reversing Change of Character (CHOCH).
+              </p>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">1. Defining the Trend</h2>
+                <p>
+                  A trend is simply the overall direction of the market. Trends
+                  are not straight lines; they are a series of zig-zags or
+                  &quot;swings.&quot; We identify the trend by looking at the pattern
+                  of these swing highs and swing lows.
+                </p>
+                <h3 className="mt-4">The Uptrend: A Series of Higher Highs &amp; Higher Lows</h3>
+                <p>
+                  An uptrend (or bullish trend) is characterized by price
+                  consistently making new highs, followed by pullbacks that form
+                  a higher low than the previous one.
+                </p>
+                <p>
+                  <strong>Higher High (HH):</strong> A swing high that is higher
+                  than the previous swing high.
+                </p>
+                <p>
+                  <strong>Higher Low (HL):</strong> A swing low that is higher
+                  than the previous swing low.
+                </p>
+                <p>
+                  As long as price continues to create this HH and HL pattern,
+                  and the Higher Lows are respected (not broken), the uptrend is
+                  considered intact.
+                </p>
+                <p className="italic text-muted-foreground">
+                  [CHART IMAGE: A clear uptrend on a candlestick chart. Each
+                  significant peak is labeled &quot;HH&quot; and each significant trough
+                  is labeled &quot;HL&quot;.]
+                </p>
+                <p>
+                  In this uptrend, notice how each peak is higher than the last
+                  (HH), and each pullback low is also higher than the last (HL).
+                  The structure is bullish.
+                </p>
+                <h3 className="mt-4">The Downtrend: A Series of Lower Highs &amp; Lower Lows</h3>
+                <p>
+                  A downtrend (or bearish trend) is the opposite. It is
+                  characterized by price consistently making new lows, followed
+                  by rallies that form a lower high than the previous one.
+                </p>
+                <p>
+                  <strong>Lower Low (LL):</strong> A swing low that is lower than
+                  the previous swing low.
+                </p>
+                <p>
+                  <strong>Lower High (LH):</strong> A swing high that is lower
+                  than the previous swing high.
+                </p>
+                <p>
+                  As long as price continues to create this LL and LH pattern,
+                  and the Lower Highs are respected, the downtrend is considered
+                  intact.
+                </p>
+                <p className="italic text-muted-foreground">
+                  [CHART IMAGE: A clear downtrend on a candlestick chart. Each
+                  significant trough is labeled &quot;LL&quot; and each significant peak
+                  is labeled &quot;LH&quot;.]
+                </p>
+                <p>
+                  In this downtrend, price makes a new low (LL), rallies to a
+                  peak that is lower than the previous one (LH), and repeats. The
+                  structure is bearish.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">2. Break of Structure (BOS): The Trend Continues</h2>
+                <p>
+                  A Break of Structure, or BOS, is a confirmation signal that
+                  the current trend is likely to continue. It&apos;s the engine that
+                  keeps a trend moving.
+                </p>
+                <ul className="list-disc list-inside space-y-1 my-2 pl-4">
+                  <li>
+                    In an Uptrend: A BOS occurs when price breaks above the most
+                    recent Higher High (HH).
+                  </li>
+                  <li>
+                    In a Downtrend: A BOS occurs when price breaks below the
+                    most recent Lower Low (LL).
+                  </li>
+                </ul>
+                <p>
+                  Seeing a BOS tells you that the momentum is still strong in
+                  the direction of the trend. Healthy trends will have multiple
+                  BOS events.
+                </p>
+                <p className="italic text-muted-foreground">
+                  [CHART IMAGE: An uptrend chart with breaks of structure
+                  highlighted.]
+                </p>
+                <p>
+                  Here, every time price creates a new Higher High, it breaks
+                  the structure of the previous high. These are bullish Breaks of
+                  Structure (BOS), signaling trend continuation.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">3. Change of Character (CHOCH): The First Warning Sign</h2>
+                <p>
+                  If a BOS confirms a trend, a Change of Character (CHOCH) is the
+                  first warning sign that a trend might be losing strength and
+                  preparing to reverse.
+                </p>
+                <p>
+                  <strong>Important:</strong> A CHOCH is NOT a confirmation of a
+                  reversal. It is simply the first signal that the underlying
+                  market dynamic is shifting.
+                </p>
+                <ul className="list-disc list-inside space-y-1 my-2 pl-4">
+                  <li>
+                    In an Uptrend: A CHOCH occurs when price fails to make a new
+                    Higher High and instead breaks below the most recent Higher
+                    Low (HL).
+                  </li>
+                  <li>
+                    In a Downtrend: A CHOCH occurs when price fails to make a
+                    new Lower Low and instead breaks above the most recent Lower
+                    High (LH).
+                  </li>
+                </ul>
+                <p>
+                  Think of it this way: the trend had one job—to protect its highs
+                  (in a downtrend) or its lows (in an uptrend). A CHOCH is the
+                  first time it fails to do so.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">Practical Application: From Trend to Reversal Signal</h2>
+                <p>
+                  Let&apos;s put it all together. The chart below shows a healthy
+                  uptrend, confirmed by multiple BOS events. But eventually, the
+                  buying pressure fades, and the market gives us a warning sign.
+                </p>
+                <p className="italic text-muted-foreground">[CHART IMAGE: A comprehensive sequence showing BOS and a final CHOCH.]</p>
+                <p>
+                  This CHOCH is your signal to stop looking for buying
+                  opportunities in the old trend and start analyzing the market
+                  for a potential new trend in the opposite direction.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">Check Your Understanding</h2>
+                <p>Test what you&apos;ve learned with these quick questions.</p>
+                <p className="mt-4 font-medium">Question 1: A Break of Structure (BOS) in a downtrend signifies:</p>
+                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
+                  <li>The trend is about to reverse.</li>
+                  <li>The trend is likely continuing.</li>
+                  <li>The market is consolidating.</li>
+                </ol>
+                <details className="my-2">
+                  <summary className="cursor-pointer text-primary">Click to see the answer</summary>
+                  <p>
+                    <strong>b) The trend is likely continuing.</strong> A BOS in a
+                    downtrend is when price breaks below the previous Lower Low,
+                    confirming bearish momentum.
+                  </p>
+                </details>
+                <p className="mt-4 font-medium">Question 2: What is the first sign that an uptrend might be losing strength and potentially reversing?</p>
+                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
+                  <li>A Break of Structure (BOS)</li>
+                  <li>A new Higher High (HH)</li>
+                  <li>A Change of Character (CHOCH)</li>
+                </ol>
+                <details className="my-2">
+                  <summary className="cursor-pointer text-primary">Click to see the answer</summary>
+                  <p>
+                    <strong>c) A Change of Character (CHOCH).</strong> A CHOCH occurs
+                    when price breaks the last Higher Low in an uptrend, signaling
+                    weakness.
+                  </p>
+                </details>
+              </section>
+
+              <Card className="mt-8 bg-card border-primary/20 shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl">Next Lesson: Liquidity Pools →</CardTitle>
+                </CardHeader>
               </Card>
             </>
           ) : (
