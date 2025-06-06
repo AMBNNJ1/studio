@@ -103,6 +103,8 @@ export default function LessonPage({ params }: Props) {
     module.slug === 'price-action-foundations' && lesson.id === 'l1';
   const isModule2Lesson1 =
     module.slug === 'market-structure-liquidity' && lesson.id === 'l1';
+  const isModule2Lesson2 =
+    module.slug === 'market-structure-liquidity' && lesson.id === 'l2';
 
   const termDefinitions = [
     { term: 'Liquidity', meaning: 'Money that can quickly change hands. In trading this means clusters of pending orders waiting to be filled.', visual: '💧' },
@@ -430,6 +432,221 @@ export default function LessonPage({ params }: Props) {
               <Card className="mt-8 bg-card border-primary/20 shadow-sm">
                 <CardHeader>
                   <CardTitle className="text-xl">Next Lesson: Liquidity Pools →</CardTitle>
+                </CardHeader>
+              </Card>
+            </>
+          ) : isModule2Lesson2 ? (
+            <>
+              <p>
+                In Lesson 1, you learned how to identify the market's "skeleton"
+                through structure. Now, we add the muscle and fuel that actually
+                moves the price: liquidity. Understanding where liquidity is and
+                why it's there is the key to differentiating between a random
+                price spike and a calculated move by institutional players.
+              </p>
+              <p>
+                <strong>Objective:</strong> After this lesson, you will be able
+                to identify key liquidity pools on a chart and understand the
+                difference between buy-side and sell-side liquidity.
+              </p>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">1. What is Liquidity? The Market's Fuel</h2>
+                <p>
+                  At its core, liquidity represents a high concentration of buy
+                  and sell orders at a specific price level.
+                </p>
+                <p>
+                  Think about it from the perspective of a large institution
+                  (like a bank or hedge fund) that needs to buy or sell millions
+                  of dollars worth of a currency or asset. They can't just click
+                  "sell" on their platform—doing so would instantly crash the
+                  price due to the sheer size of their order, resulting in a
+                  terrible average price for them.
+                </p>
+                <p>
+                  Instead, they need to be strategic. They must find areas in
+                  the market where there are enough opposing orders to absorb
+                  their massive position without causing too much volatility.
+                  These areas of dense orders are liquidity pools.
+                </p>
+                <p>
+                  <strong>Analogy:</strong> If market structure is the skeleton,
+                  liquidity is the fuel. Without liquidity, the market structure
+                  cannot move. Institutions hunt for liquidity to fuel their
+                  moves.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">2. Where Does Liquidity Build? The Psychology of Orders</h2>
+                <p>
+                  Liquidity isn't random; it accumulates in predictable places
+                  based on common trading strategies and human psychology. The
+                  two main sources of liquidity are:
+                </p>
+                <p className="mt-2 font-semibold">Stop-Loss Orders: This is the most significant source.</p>
+                <ul className="list-disc list-inside space-y-1 my-2 pl-4">
+                  <li>
+                    Traders who are in a long (buy) position place their
+                    stop-loss orders just below a recent swing low or support
+                    level.
+                  </li>
+                  <li>
+                    Traders who are in a short (sell) position place their
+                    stop-loss orders just above a recent swing high or
+                    resistance level.
+                  </li>
+                </ul>
+                <p className="font-semibold">Breakout Entry Orders:</p>
+                <ul className="list-disc list-inside space-y-1 my-2 pl-4">
+                  <li>
+                    Breakout traders place buy-stop orders to enter a long
+                    position just above a key resistance level, betting the
+                    price will continue higher.
+                  </li>
+                  <li>
+                    Breakout traders place sell-stop orders to enter a short
+                    position just below a key support level, betting the price
+                    will continue lower.
+                  </li>
+                </ul>
+                <p>
+                  Both of these actions cluster orders at predictable highs and
+                  lows, creating the pools that institutions target.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">3. Buy-side vs. Sell-side Liquidity</h2>
+                <h3 className="mt-4">Buy-side Liquidity</h3>
+                <p>
+                  Buy-side liquidity is a pool of buy orders resting above a key
+                  swing high or resistance level. It consists of:
+                </p>
+                <ul className="list-disc list-inside space-y-1 my-2 pl-4">
+                  <li>Stop losses from short-sellers.</li>
+                  <li>Buy-stop entries from breakout traders.</li>
+                </ul>
+                <p>
+                  Institutions who want to sell a large position will often
+                  engineer price to move up towards these highs. When price hits
+                  this level, it triggers the cascade of buy orders, providing
+                  the necessary liquidity for the institution to fill their
+                  large sell orders at a favorable price.
+                </p>
+                <p className="italic text-muted-foreground">
+                  [CHART IMAGE: A chart showing a clear swing high or resistance
+                  level. A horizontal line marks the high. Above the line, a
+                  "cloud" or bracket is labeled "Buy-Side Liquidity Pool ($$$)."
+                  Text annotations point to the cloud: "Stop-losses from short
+                  positions" and "Buy orders from breakout traders."]
+                </p>
+                <h3 className="mt-4">Sell-side Liquidity</h3>
+                <p>
+                  Sell-side liquidity is a pool of sell orders resting below a
+                  key swing low or support level. It consists of:
+                </p>
+                <ul className="list-disc list-inside space-y-1 my-2 pl-4">
+                  <li>Stop losses from long-holders.</li>
+                  <li>Sell-stop entries from breakout traders.</li>
+                </ul>
+                <p>
+                  Institutions who want to buy a large position will often
+                  engineer price to move down towards these lows. When price
+                  hits this level, it triggers the cascade of sell orders,
+                  allowing the institution to fill their large buy orders.
+                </p>
+                <p className="italic text-muted-foreground">
+                  [CHART IMAGE: A chart showing a clear swing low or support
+                  level. A horizontal line marks the low. Below the line, a
+                  "cloud" or bracket is labeled "Sell-Side Liquidity Pool ($$$)."
+                  Text annotations point to the cloud: "Stop-losses from long
+                  positions" and "Sell orders from breakout traders."]
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">4. Obvious Targets: Equal Highs (EQH) &amp; Equal Lows (EQL)</h2>
+                <p>
+                  The most obvious, and therefore most significant, liquidity
+                  pools are formed at Equal Highs and Equal Lows.
+                </p>
+                <p>
+                  <strong>Equal Highs (EQH):</strong> A price level where the
+                  market has created a "double top" or "triple top." Price has
+                  tested this resistance level multiple times but failed to break
+                  through.
+                </p>
+                <p>
+                  <strong>Equal Lows (EQL):</strong> A price level where the
+                  market has created a "double bottom" or "triple bottom." Price
+                  has tested this support level multiple times.
+                </p>
+                <p>
+                  To a beginner, these levels look like strong barriers. To an
+                  institutional trader, they are giant, flashing targets. The
+                  longer these levels hold, the more liquidity builds up above
+                  (for EQH) or below (for EQL) them, making them prime targets
+                  for a liquidity hunt.
+                </p>
+                <h3 className="mt-4">Practical Application:</h3>
+                <p>
+                  The chart below shows a market in consolidation. Notice the
+                  clear boundaries at the top and bottom. These are not just
+                  "resistance" and "support"; they are engineered pools of
+                  liquidity.
+                </p>
+                <p className="italic text-muted-foreground">
+                  [CHART IMAGE: A chart of a ranging market. A horizontal line is
+                  drawn across the multiple peaks, labeled "Equal Highs (EQH) -
+                  Obvious Buy-side Liquidity Pool." Another horizontal line is
+                  drawn across the multiple troughs, labeled "Equal Lows (EQL) -
+                  Obvious Sell-side Liquidity Pool." A text box points to the
+                  EQH line and says: "Retail sees resistance; institutions see
+                  fuel for their sell orders." Another text box points to the
+                  EQL line and says: "Retail sees support; institutions see fuel
+                  for their buy orders."]
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">Check Your Understanding</h2>
+                <p>Test what you've learned with these quick questions.</p>
+                <p className="mt-4 font-medium">Question 1: Buy-side liquidity is typically found:</p>
+                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
+                  <li>Below a significant swing low.</li>
+                  <li>Above a significant swing high.</li>
+                  <li>In the middle of a trading range.</li>
+                </ol>
+                <details className="my-2">
+                  <summary className="cursor-pointer text-primary">Click to see the answer</summary>
+                  <p>
+                    <strong>b) Above a significant swing high.</strong> This is
+                    where stop-loss orders for short positions and buy-stop
+                    orders for breakout traders collect.
+                  </p>
+                </details>
+                <p className="mt-4 font-medium">Question 2: A "double bottom" pattern creates an obvious pool of:</p>
+                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
+                  <li>Buy-side liquidity.</li>
+                  <li>Sell-side liquidity.</li>
+                  <li>No significant liquidity.</li>
+                </ol>
+                <details className="my-2">
+                  <summary className="cursor-pointer text-primary">Click to see the answer</summary>
+                  <p>
+                    <strong>b) Sell-side liquidity.</strong> A double bottom, or
+                    Equal Lows (EQL), creates a large pool of stop-loss orders
+                    from buyers and sell-stop orders from breakout sellers, which
+                    constitutes sell-side liquidity.
+                  </p>
+                </details>
+              </section>
+
+              <Card className="mt-8 bg-card border-primary/20 shadow-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl">Next Lesson: Liquidity Sweeps →</CardTitle>
                 </CardHeader>
               </Card>
             </>
