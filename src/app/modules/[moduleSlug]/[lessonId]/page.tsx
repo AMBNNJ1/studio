@@ -148,7 +148,7 @@ export default function LessonPage({ params }: Props) {
           )}
         </div>
 
-        <article className="prose prose-lg dark:prose-invert max-w-none space-y-8 md:space-y-12">
+        <article className="prose prose-lg dark:prose-invert max-w-none space-y-12 md:space-y-16 tracking-wider leading-loose prose-p:my-6">
           {isModule1Lesson1 ? (
             <>
               <p className="text-base italic text-muted-foreground">Beginner-friendly edition – no prior knowledge assumed</p>
