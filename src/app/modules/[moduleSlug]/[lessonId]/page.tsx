@@ -16,6 +16,7 @@ import {
   ChevronLeft,
   MonitorPlay,
 } from "lucide-react";
+import QuizModal from "@/components/quiz-modal";
 import type { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
@@ -564,51 +565,6 @@ export default function LessonPage({ params }: Props) {
                 </p>
               </section>
 
-              <section>
-                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">
-                  Check Your Understanding
-                </h2>
-                <p>Test what you&apos;ve learned with these quick questions.</p>
-                <p className="mt-4 font-medium">
-                  Question 1: A Break of Structure (BOS) in a downtrend
-                  signifies:
-                </p>
-                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
-                  <li>The trend is about to reverse.</li>
-                  <li>The trend is likely continuing.</li>
-                  <li>The market is consolidating.</li>
-                </ol>
-                <details className="my-2">
-                  <summary className="cursor-pointer text-primary">
-                    Click to see the answer
-                  </summary>
-                  <p>
-                    <strong>b) The trend is likely continuing.</strong> A BOS in
-                    a downtrend is when price breaks below the previous Lower
-                    Low, confirming bearish momentum.
-                  </p>
-                </details>
-                <p className="mt-4 font-medium">
-                  Question 2: What is the first sign that an uptrend might be
-                  losing strength and potentially reversing?
-                </p>
-                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
-                  <li>A Break of Structure (BOS)</li>
-                  <li>A new Higher High (HH)</li>
-                  <li>A Change of Character (CHOCH)</li>
-                </ol>
-                <details className="my-2">
-                  <summary className="cursor-pointer text-primary">
-                    Click to see the answer
-                  </summary>
-                  <p>
-                    <strong>c) A Change of Character (CHOCH).</strong> A CHOCH
-                    occurs when price breaks the last Higher Low in an uptrend,
-                    signaling weakness.
-                  </p>
-                </details>
-              </section>
-
               <Card className="mt-8 bg-card border-primary/20 shadow-sm">
                 <CardHeader>
                   <CardTitle className="text-xl">
@@ -802,51 +758,6 @@ export default function LessonPage({ params }: Props) {
                 </p>
               </section>
 
-              <section>
-                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">
-                  Check Your Understanding
-                </h2>
-                <p>Test what you've learned with these quick questions.</p>
-                <p className="mt-4 font-medium">
-                  Question 1: Buy-side liquidity is typically found:
-                </p>
-                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
-                  <li>Below a significant swing low.</li>
-                  <li>Above a significant swing high.</li>
-                  <li>In the middle of a trading range.</li>
-                </ol>
-                <details className="my-2">
-                  <summary className="cursor-pointer text-primary">
-                    Click to see the answer
-                  </summary>
-                  <p>
-                    <strong>b) Above a significant swing high.</strong> This is
-                    where stop-loss orders for short positions and buy-stop
-                    orders for breakout traders collect.
-                  </p>
-                </details>
-                <p className="mt-4 font-medium">
-                  Question 2: A "double bottom" pattern creates an obvious pool
-                  of:
-                </p>
-                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
-                  <li>Buy-side liquidity.</li>
-                  <li>Sell-side liquidity.</li>
-                  <li>No significant liquidity.</li>
-                </ol>
-                <details className="my-2">
-                  <summary className="cursor-pointer text-primary">
-                    Click to see the answer
-                  </summary>
-                  <p>
-                    <strong>b) Sell-side liquidity.</strong> A double bottom, or
-                    Equal Lows (EQL), creates a large pool of stop-loss orders
-                    from buyers and sell-stop orders from breakout sellers,
-                    which constitutes sell-side liquidity.
-                  </p>
-                </details>
-              </section>
-
               <Card className="mt-8 bg-card border-primary/20 shadow-sm">
                 <CardHeader>
                   <CardTitle className="text-xl">
@@ -1012,60 +923,6 @@ export default function LessonPage({ params }: Props) {
                   rejection. The BOS is a confident continuation.
                 </p>
               </section>
-
-              <section>
-                <h2 className="font-semibold text-2xl text-foreground border-b pb-2">
-                  Check Your Understanding
-                </h2>
-                <p>Test what you've learned with these quick questions.</p>
-                <p className="mt-4 font-medium">
-                  Question 1: What is the primary purpose of a liquidity sweep
-                  from an institutional perspective?
-                </p>
-                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
-                  <li>To follow the trend.</li>
-                  <li>To fill their large orders by engineering liquidity.</li>
-                  <li>To create a new support level.</li>
-                </ol>
-                <details className="my-2">
-                  <summary className="cursor-pointer text-primary">
-                    Click to see the answer
-                  </summary>
-                  <p>
-                    <strong>
-                      b) To fill their large orders by engineering liquidity.
-                    </strong>{" "}
-                    The sweep is a calculated move to trigger stop losses and
-                    breakout orders, creating the necessary liquidity for
-                    institutions to enter their positions.
-                  </p>
-                </details>
-                <p className="mt-4 font-medium">
-                  Question 2: You see price poke just below a clear swing low
-                  and then rapidly reverse, closing back above the low with a
-                  long bottom wick. This is most likely a:
-                </p>
-                <ol className="list-decimal list-inside space-y-1 my-2 pl-4">
-                  <li>Bearish Break of Structure (BOS).</li>
-                  <li>A bullish liquidity sweep.</li>
-                  <li>A signal to sell immediately.</li>
-                </ol>
-                <details className="my-2">
-                  <summary className="cursor-pointer text-primary">
-                    Click to see the answer
-                  </summary>
-                  <p>
-                    <strong>b) A bullish liquidity sweep.</strong> This price
-                    action indicates that sell-side liquidity was taken, and the
-                    reversal signals potential bullish strength. It is a
-                    reversal signal, not a continuation (BOS).
-                  </p>
-                </details>
-                <p className="mt-4 font-semibold">
-                  Congratulations! You have completed the Market Structure &amp;
-                  Liquidity Module.
-                </p>
-              </section>
             </>
           ) : (
             <div>
@@ -1083,6 +940,11 @@ export default function LessonPage({ params }: Props) {
             </div>
           )}
         </article>
+        {module.quiz && module.quiz.length > 0 && (
+          <div className="pt-8 border-t">
+            <QuizModal quiz={module.quiz} moduleSlug={module.slug} />
+          </div>
+        )}
       </div>
     </AppLayout>
   );
