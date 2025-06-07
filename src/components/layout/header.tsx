@@ -23,6 +23,12 @@ export default function Header() {
           <span className="text-2xl font-semibold text-foreground">Core</span>
         </Link>
         <nav className="flex items-center space-x-4">
+          <Link
+            href="/progress"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground"
+          >
+            Progress
+          </Link>
           <Button variant="ghost" size="icon" aria-label="Search">
             <Search className="h-5 w-5 text-muted-foreground" />
           </Button>

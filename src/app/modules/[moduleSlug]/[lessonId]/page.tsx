@@ -17,6 +17,7 @@ import {
   MonitorPlay,
 } from "lucide-react";
 import QuizModal from "@/components/quiz-modal";
+import LessonProgress from "@/components/lesson-progress";
 import type { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
@@ -178,6 +179,7 @@ export default function LessonPage({ params }: Props) {
 
   return (
     <AppLayout>
+      <LessonProgress id={`${module.slug}:${lesson.id}`} />
       <div className="space-y-14 py-12 md:space-y-20 md:py-16">
         <div>
           <Button variant="outline" asChild className="mb-6 text-sm">
