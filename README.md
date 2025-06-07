@@ -45,7 +45,11 @@ Verify TypeScript types:
 npm run typecheck
 ```
 
-Linting is not yet configured. Running `npm run lint` will prompt you to create a configuration.
+Run ESLint:
+
+```bash
+npm run lint
+```
 
 ## Docs
 
