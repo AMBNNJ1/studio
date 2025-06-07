@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import { Search } from 'lucide-react';
+import { Moon, Search, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/hooks/use-theme';
 
 export default function Header() {
+  const { theme, toggleTheme } = useTheme();
   return (
     <header className="bg-background">
       <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -23,6 +25,18 @@ export default function Header() {
         <nav className="flex items-center space-x-4">
           <Button variant="ghost" size="icon" aria-label="Search">
             <Search className="h-5 w-5 text-muted-foreground" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-5 w-5 text-muted-foreground" />
+            ) : (
+              <Moon className="h-5 w-5 text-muted-foreground" />
+            )}
           </Button>
           <Button variant="secondary" className="rounded-full px-6 py-2 text-sm">
             Log in
