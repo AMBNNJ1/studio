@@ -5,7 +5,7 @@ import type { ModuleDefinition } from '@/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertTriangle, ChevronLeft, BookOpen, CheckCircle, HelpCircle } from 'lucide-react';
+import { AlertTriangle, ChevronLeft, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata, ResolvingMetadata } from 'next';
 
@@ -135,55 +135,6 @@ export default function ModuleDetailPage({ params }: Props) {
           )}
         </section>
 
-        {module.quiz && module.quiz.length > 0 && (
-           <section className="mt-12 pt-8 border-t border-border"> {/* Added mt-12 for separation */}
-            <h2 className="font-headline text-3xl font-semibold tracking-tight text-foreground mb-10 border-b pb-5">
-              Quiz
-            </h2>
-            <Card className="shadow-md rounded-xl overflow-hidden bg-card border border-border">
-              <CardHeader className="p-6">
-                <CardTitle className="text-xl font-semibold text-foreground">Test Your Knowledge</CardTitle>
-                <CardDescription className="text-base text-muted-foreground pt-1">
-                  Check your understanding of this module. ({module.quiz.length} {module.quiz.length === 1 ? 'question' : 'questions'})
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-6 pt-0 space-y-8">
-                {module.quiz.map((quizItem, index) => (
-                  <div key={index} className="p-6 border border-border rounded-lg bg-background shadow-sm space-y-4">
-                    <p className="font-medium text-lg text-foreground flex items-start">
-                        <HelpCircle className="h-5 w-5 text-primary mr-3 mt-1 flex-shrink-0" />
-                        <span>{index + 1}. {quizItem.question}</span>
-                    </p>
-                    {quizItem.options.length > 0 ? (
-                      <ul className="list-none space-y-2.5 pl-8">
-                        {quizItem.options.map((opt, i) => (
-                          <li key={i} className={`flex items-center text-muted-foreground ${opt.isCorrect ? 'font-medium text-foreground' : ''}`}>
-                            {opt.isCorrect ? <CheckCircle className="h-4 w-4 text-green-500 mr-2.5 flex-shrink-0" /> : <span className="h-4 w-4 mr-2.5 flex-shrink-0"></span>}
-                            <span>{String.fromCharCode(97 + i)}) {opt.text}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                       <p className="text-sm text-muted-foreground italic pl-8">Options not available for this question yet.</p>
-                    )}
-                    {quizItem.answerKey && !quizItem.options.some(o => o.isCorrect) && ( 
-                      <div className="mt-4 pt-4 border-t border-border">
-                        <p className="text-sm flex items-start">
-                          <CheckCircle className="h-4 w-4 text-primary mr-2.5 mt-0.5 flex-shrink-0" />
-                          <strong className="text-foreground mr-1.5">Answer:</strong> <span className="text-muted-foreground">{quizItem.answerKey}</span>
-                        </p>
-                      </div>
-                    )}
-                     {!quizItem.answerKey && !quizItem.options.some(o => o.isCorrect) && (
-                       <p className="text-sm mt-4 pt-4 border-t border-border text-muted-foreground italic pl-8">Answer key not provided for this question.</p>
-                    )}
-                  </div>
-                ))}
-                 <Button variant="outline" disabled className="mt-8 w-full sm:w-auto">Start Interactive Quiz (Coming Soon)</Button>
-              </CardContent>
-            </Card>
-          </section>
-        )}
       </div>
     </AppLayout>
   );
