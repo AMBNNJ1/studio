@@ -198,15 +198,16 @@ export default function LessonPage({ params }: Props) {
           </p>
           {lesson.videoUrl && (
             <Card className="mt-6 bg-card border-primary/20 shadow-sm">
-              <CardContent className="pt-6 flex items-center gap-3">
+              <CardHeader className="flex flex-row items-center gap-3 pb-2">
                 <MonitorPlay className="h-6 w-6 text-primary" />
-                <p className="text-foreground">
-                  Watch-along video:{" "}
-                  <code className="bg-muted px-2 py-1 rounded-sm text-sm">
-                    {lesson.videoUrl}
-                  </code>{" "}
-                  (Video player coming soon)
-                </p>
+                <CardTitle className="text-xl">Watch-along video</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <video
+                  src={lesson.videoUrl}
+                  controls
+                  className="w-full h-auto rounded-md"
+                />
               </CardContent>
             </Card>
           )}
