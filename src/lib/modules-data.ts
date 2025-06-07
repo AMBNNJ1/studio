@@ -26,7 +26,24 @@ export const allModules: ModuleDefinition[] = [
         ],
         answerKey: 'b) Wick',
       },
-      // Add 4 more questions for Module 1 later
+      {
+        question: 'A long wick through a prior high usually indicates …',
+        options: [
+          { text: 'a lack of liquidity', isCorrect: false },
+          { text: 'a liquidity grab', isCorrect: true },
+          { text: 'market closed', isCorrect: false },
+        ],
+        answerKey: 'b) a liquidity grab',
+      },
+      {
+        question: 'The body of a candlestick shows …',
+        options: [
+          { text: 'where trading was most active', isCorrect: true },
+          { text: 'only the closing price', isCorrect: false },
+          { text: 'pending orders', isCorrect: false },
+        ],
+        answerKey: 'a) where trading was most active',
+      },
     ],
     imagePlaceholder: '/images/module-1-price-action.png', // Path confirmed
     dataAiHint: 'candlestick chart',
@@ -51,6 +68,24 @@ export const allModules: ModuleDefinition[] = [
           { text: 'no change', isCorrect: false },
         ],
         answerKey: 'b) probable reversal',
+      },
+      {
+        question: 'A Break of Structure (BOS) suggests …',
+        options: [
+          { text: 'trend continuation', isCorrect: true },
+          { text: 'immediate reversal', isCorrect: false },
+          { text: 'no movement', isCorrect: false },
+        ],
+        answerKey: 'a) trend continuation',
+      },
+      {
+        question: 'Liquidity pools often form near …',
+        options: [
+          { text: 'recent highs or lows', isCorrect: true },
+          { text: 'random mid-range levels', isCorrect: false },
+          { text: 'unrelated news articles', isCorrect: false },
+        ],
+        answerKey: 'a) recent highs or lows',
       },
     ],
     imagePlaceholder: '/images/module-2-price-action.png',
@@ -77,6 +112,24 @@ export const allModules: ModuleDefinition[] = [
           { text: 'all of the above', isCorrect: true },
         ],
         answerKey: 'd) all of the above',
+      },
+      {
+        question: 'A bullish order block forms before …',
+        options: [
+          { text: 'a down move', isCorrect: false },
+          { text: 'a strong up move', isCorrect: true },
+          { text: 'sideways price', isCorrect: false },
+        ],
+        answerKey: 'b) a strong up move',
+      },
+      {
+        question: 'After mitigation, price often …',
+        options: [
+          { text: 'continues in the original direction', isCorrect: true },
+          { text: 'reverses permanently', isCorrect: false },
+          { text: 'stops moving', isCorrect: false },
+        ],
+        answerKey: 'a) continues in the original direction',
       },
     ],
     imagePlaceholder: '/images/module-3-price-action.png',
