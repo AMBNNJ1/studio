@@ -1,5 +1,52 @@
 # Firebase Studio
 
-This is a NextJS starter in Firebase Studio.
+This repository contains a starter project built with Next.js and Firebase.
 
-To get started, take a look at src/app/page.tsx.
+## Requirements
+
+- Node.js 18+
+- npm
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The main entry point is `src/app/page.tsx`.
+
+## Building
+
+Generate a production build with:
+
+```bash
+npm run build
+```
+
+Start the compiled app using:
+
+```bash
+npm start
+```
+
+## Checks
+
+Verify TypeScript types:
+
+```bash
+npm run typecheck
+```
+
+Linting is not yet configured. Running `npm run lint` will prompt you to create a configuration.
+
+## Docs
+
+See [`docs/blueprint.md`](docs/blueprint.md) for a high-level design overview.
