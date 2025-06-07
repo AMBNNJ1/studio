@@ -71,7 +71,16 @@ const enhanceGlossarySearchFlow = ai.defineFlow(
     outputSchema: EnhanceGlossarySearchOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    try {
+      const {output} = await prompt(input);
+      if (!output || !Array.isArray(output.enhancedResults)) {
+        console.error('Error: Invalid output from AI prompt in enhanceGlossarySearchFlow. Output or output.enhancedResults is missing or not an array.');
+        return { enhancedResults: [] };
+      }
+      return output;
+    } catch (error) {
+      console.error("AI prompt call failed:", error);
+      return { enhancedResults: [] };
+    }
   }
 );

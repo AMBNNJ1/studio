@@ -140,10 +140,10 @@ export default function GlossarySearch() {
           </div>
         </div>
       )}
-       {!results && !isLoading && !error && searchTerm && (
+       {!results && !isLoading && !error && !searchTerm && (
          <Card>
             <CardContent className="pt-6">
-              <p className="text-center text-muted-foreground">Enter a search term and click "Search" to see results.</p>
+              <p className="text-center text-muted-foreground">Enter a search term and click 'Search' to see results.</p>
             </CardContent>
           </Card>
        )}
