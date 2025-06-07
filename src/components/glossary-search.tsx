@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { enhanceGlossarySearch, type EnhanceGlossarySearchInput, type EnhanceGlossarySearchOutput } from '@/ai/flows/enhance-glossary-search';
+import { glossaryData } from '@/lib/glossary-data';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,9 +29,17 @@ const dummyGlossaryTerms = [
   'Reversal'
 ];
 
+const glossaryMap = new Map(glossaryData.map((item) => [item.term, item.definition]));
+
 export default function GlossarySearch() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState<EnhanceGlossarySearchOutput['enhancedResults'] | null>(null);
+  interface ResultWithDefinition {
+    term: string;
+    similarityScore: number;
+    definition: string;
+  }
+
+  const [results, setResults] = useState<ResultWithDefinition[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -53,7 +62,12 @@ export default function GlossarySearch() {
       };
       const output = await enhanceGlossarySearch(input);
       // Sort results by similarity score in descending order
-      const sortedResults = output.enhancedResults.sort((a, b) => b.similarityScore - a.similarityScore);
+      const sortedResults = output.enhancedResults
+        .sort((a, b) => b.similarityScore - a.similarityScore)
+        .map((r) => ({
+          ...r,
+          definition: glossaryMap.get(r.term) ?? 'Definition not found.',
+        }));
       setResults(sortedResults);
     } catch (e) {
       console.error("Error enhancing glossary search:", e);
@@ -130,10 +144,7 @@ export default function GlossarySearch() {
                   <p className="text-sm text-muted-foreground">
                     Similarity Score: <span className="font-medium text-primary">{(result.similarityScore * 100).toFixed(0)}%</span>
                   </p>
-                  <p className="mt-2 text-sm">
-                    {/* Placeholder for actual definition - to be implemented later */}
-                    This is a placeholder definition for {result.term}. Detailed explanation will be available soon.
-                  </p>
+                  <p className="mt-2 text-sm">{result.definition}</p>
                 </CardContent>
               </Card>
             ))}
