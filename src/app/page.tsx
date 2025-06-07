@@ -8,6 +8,11 @@ import { Award, Target, PlaySquare, FileQuestion, Users, ArrowRight, BookCopy } 
 import Image from 'next/image';
 import { allModules } from '@/lib/modules-data';
 import { Badge } from '@/components/ui/badge';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Become a Profitable Trader',
+};
 
 export default function Home() {
   const features = [
@@ -57,7 +62,7 @@ export default function Home() {
       <section className="py-16 text-center md:py-24 lg:py-32">
         <div className="container mx-auto max-w-3xl px-4">
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            Master ICT Trading Concepts
+            Become a Profitable Trader
           </h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground sm:text-xl">
             Unlock the secrets of Inner Circle Trader methodology with concise lessons, engaging videos, and interactive quizzes. Start your journey to trading proficiency today.
