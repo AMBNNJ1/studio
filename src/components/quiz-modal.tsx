@@ -17,6 +17,7 @@ import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { Check, X } from 'lucide-react';
 import type { QuizQuestionDefinition } from '@/types';
+import { useProgress } from '@/hooks/use-progress';
 
 interface QuizModalProps {
   quiz: QuizQuestionDefinition[];
@@ -29,6 +30,7 @@ export default function QuizModal({ quiz, moduleSlug }: QuizModalProps) {
   const [choice, setChoice] = useState('');
   const [score, setScore] = useState(0);
   const router = useRouter();
+  const { markQuiz } = useProgress();
 
   const question = quiz[index];
   const progress = Math.round((index / quiz.length) * 100);
@@ -40,6 +42,7 @@ export default function QuizModal({ quiz, moduleSlug }: QuizModalProps) {
       setScore((s) => s + 1);
     }
     if (index === quiz.length - 1) {
+      markQuiz(moduleSlug);
       setOpen(false);
       setIndex(0);
       setChoice('');
