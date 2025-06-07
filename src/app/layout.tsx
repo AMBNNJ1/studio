@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/hooks/use-theme";
 
 // If you want to use the Next.js font optimization, uncomment this:
 /*
@@ -30,8 +31,10 @@ export default function RootLayout({
       </head>
       {/* If using Next.js font optimization, use className={`${inter.variable} font-body antialiased`} */}
       <body className="font-body antialiased">
-        {children}
-        <Toaster />
+        <ThemeProvider>
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
