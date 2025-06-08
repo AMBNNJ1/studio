@@ -16,10 +16,34 @@ export const allModules: ModuleDefinition[] = [
         videoUrl: '/videos/m1_l1_intro.mp4',
         markdownPath: 'price-action-foundations/l1.mdx',
       },
-      { id: 'l2', title: 'Anatomy of a Candlestick', keyTakeaways: 'Open, high, low, close; wicks = liquidity probes.', videoUrl: '/videos/m1_l2_candles.mp4' },
-      { id: 'l3', title: 'Trading Sessions & Time-of-Day', keyTakeaways: 'Asia, London, New-York killzones; PD Arrays intro.', videoUrl: '/videos/m1_l3_sessions.mp4' },
-      { id: 'l4', title: 'Candle Sentiment & Reversals', keyTakeaways: 'How body fill, wick length, and relative position signal bullish vs. bearish intent; basic pin-bar and engulfing patterns.', videoUrl: '/videos/m1_l4_sentiment.mp4' },
-      { id: 'l5', title: 'Support & Resistance Basics', keyTakeaways: 'Spot swing highs/lows and mark simple ICT PD Arrays acting as support or resistance.', videoUrl: '/videos/m1_l5_support_resist.mp4' },
+      {
+        id: 'l2',
+        title: 'Anatomy of a Candlestick',
+        keyTakeaways: 'Open, high, low, close; wicks = liquidity probes.',
+        videoUrl: '/videos/m1_l2_candles.mp4',
+        markdownPath: 'price-action-foundations/l2.mdx',
+      },
+      {
+        id: 'l3',
+        title: 'Trading Sessions & Time-of-Day',
+        keyTakeaways: 'Asia, London, New-York killzones; PD Arrays intro.',
+        videoUrl: '/videos/m1_l3_sessions.mp4',
+        markdownPath: 'price-action-foundations/l3.mdx',
+      },
+      {
+        id: 'l4',
+        title: 'Candle Sentiment & Reversals',
+        keyTakeaways: 'How body fill, wick length, and relative position signal bullish vs. bearish intent; basic pin-bar and engulfing patterns.',
+        videoUrl: '/videos/m1_l4_sentiment.mp4',
+        markdownPath: 'price-action-foundations/l4.mdx',
+      },
+      {
+        id: 'l5',
+        title: 'Support & Resistance Basics',
+        keyTakeaways: 'Spot swing highs/lows and mark simple ICT PD Arrays acting as support or resistance.',
+        videoUrl: '/videos/m1_l5_support_resist.mp4',
+        markdownPath: 'price-action-foundations/l5.mdx',
+      },
     ],
     quiz: [
       {
@@ -61,8 +85,20 @@ export const allModules: ModuleDefinition[] = [
     level: 'Beginner→Intermediate',
     description: 'Identify structure shifts and locate the pools of liquidity institutions target.',
     lessons: [
-      { id: 'l1', title: 'Market Structure Basics', keyTakeaways: 'Swing highs/lows, break of structure (BOS) vs. change of character (CHOCH).', videoUrl: '/videos/m2_l1_structure.mp4' },
-      { id: 'l2', title: 'Liquidity Pools', keyTakeaways: 'Equal highs/lows, buy-side vs sell-side liquidity.', videoUrl: '/videos/m2_l2_liquidity_pools.mp4' },
+      {
+        id: 'l1',
+        title: 'Market Structure Basics',
+        keyTakeaways: 'Swing highs/lows, break of structure (BOS) vs. change of character (CHOCH).',
+        videoUrl: '/videos/m2_l1_structure.mp4',
+        markdownPath: 'market-structure-liquidity/l1.mdx',
+      },
+      {
+        id: 'l2',
+        title: 'Liquidity Pools',
+        keyTakeaways: 'Equal highs/lows, buy-side vs sell-side liquidity.',
+        videoUrl: '/videos/m2_l2_liquidity_pools.mp4',
+        markdownPath: 'market-structure-liquidity/l2.mdx',
+      },
       {
         id: 'l3',
         title: 'Liquidity Sweeps',
@@ -117,8 +153,20 @@ export const allModules: ModuleDefinition[] = [
         videoUrl: '/videos/m3_l1_define_ob.mp4',
         markdownPath: 'order-blocks-mitigation/l1.mdx',
       },
-      { id: 'l2', title: 'Bullish vs Bearish OB', keyTakeaways: 'Identification criteria, ideal entry zones.', videoUrl: '/videos/m3_l2_types.mp4' },
-      { id: 'l3', title: 'Mitigation & Re-pricing', keyTakeaways: 'Why price returns to OB after imbalance.', videoUrl: '/videos/m3_l3_mitigation.mp4' },
+      {
+        id: 'l2',
+        title: 'Bullish vs Bearish OB',
+        keyTakeaways: 'Identification criteria, ideal entry zones.',
+        videoUrl: '/videos/m3_l2_types.mp4',
+        markdownPath: 'order-blocks-mitigation/l2.mdx',
+      },
+      {
+        id: 'l3',
+        title: 'Mitigation & Re-pricing',
+        keyTakeaways: 'Why price returns to OB after imbalance.',
+        videoUrl: '/videos/m3_l3_mitigation.mp4',
+        markdownPath: 'order-blocks-mitigation/l3.mdx',
+      },
     ],
     quiz: [
       {
@@ -160,9 +208,27 @@ export const allModules: ModuleDefinition[] = [
     level: 'Intermediate',
     description: 'Understand price inefficiencies and how smart money uses them for entries/exits.',
     lessons: [
-      { id: 'l1', title: 'What Is an Imbalance?', keyTakeaways: 'One-sided price delivery; three-candle rule.', videoUrl: '/videos/m4_l1_imbalance.mp4' },
-      { id: 'l2', title: 'Fair Value Gaps vs Liquidity Voids', keyTakeaways: 'Distinctions, how to mark them.', videoUrl: '/videos/m4_l2_fvg_vs_void.mp4' },
-      { id: 'l3', title: 'Premium & Discount Arrays', keyTakeaways: 'Optimal Trade Entry (OTE) within PD arrays.', videoUrl: '/videos/m4_l3_premium_discount.mp4' },
+      {
+        id: 'l1',
+        title: 'What Is an Imbalance?',
+        keyTakeaways: 'One-sided price delivery; three-candle rule.',
+        videoUrl: '/videos/m4_l1_imbalance.mp4',
+        markdownPath: 'imbalances-fair-value-gaps/l1.mdx',
+      },
+      {
+        id: 'l2',
+        title: 'Fair Value Gaps vs Liquidity Voids',
+        keyTakeaways: 'Distinctions, how to mark them.',
+        videoUrl: '/videos/m4_l2_fvg_vs_void.mp4',
+        markdownPath: 'imbalances-fair-value-gaps/l2.mdx',
+      },
+      {
+        id: 'l3',
+        title: 'Premium & Discount Arrays',
+        keyTakeaways: 'Optimal Trade Entry (OTE) within PD arrays.',
+        videoUrl: '/videos/m4_l3_premium_discount.mp4',
+        markdownPath: 'imbalances-fair-value-gaps/l3.mdx',
+      },
     ],
     quiz: [
       // Sample quiz Q&A was "..." - add specific questions later
@@ -177,9 +243,27 @@ export const allModules: ModuleDefinition[] = [
     level: 'Advanced',
     description: 'Apply prior concepts inside high-probability ICT models.',
     lessons: [
-      { id: 'l1', title: 'Judas Swing Setup', keyTakeaways: 'Fake move in Asia → real move in London.', videoUrl: '/videos/m5_l1_judas.mp4' },
-      { id: 'l2', title: 'Power of Three (PO3)', keyTakeaways: 'Accumulation-Manipulation-Distribution cycle.', videoUrl: '/videos/m5_l2_po3.mp4' },
-      { id: 'l3', title: 'Session Array Model', keyTakeaways: 'Combining OB + FVG + liquidity sweep in a session.', videoUrl: '/videos/m5_l3_session_model.mp4' },
+      {
+        id: 'l1',
+        title: 'Judas Swing Setup',
+        keyTakeaways: 'Fake move in Asia → real move in London.',
+        videoUrl: '/videos/m5_l1_judas.mp4',
+        markdownPath: 'trading-models-execution/l1.mdx',
+      },
+      {
+        id: 'l2',
+        title: 'Power of Three (PO3)',
+        keyTakeaways: 'Accumulation-Manipulation-Distribution cycle.',
+        videoUrl: '/videos/m5_l2_po3.mp4',
+        markdownPath: 'trading-models-execution/l2.mdx',
+      },
+      {
+        id: 'l3',
+        title: 'Session Array Model',
+        keyTakeaways: 'Combining OB + FVG + liquidity sweep in a session.',
+        videoUrl: '/videos/m5_l3_session_model.mp4',
+        markdownPath: 'trading-models-execution/l3.mdx',
+      },
     ],
     quiz: [
       // Quiz was "..." - add specific questions later
@@ -194,9 +278,27 @@ export const allModules: ModuleDefinition[] = [
     level: 'Advanced',
     description: 'Cap losses, let winners run, and build a data-driven trading journal.',
     lessons: [
-      { id: 'l1', title: 'Position Sizing & R-Multiple', keyTakeaways: 'Fixed-fractional vs. Kelly vs. ICT’s 1 % rule.', videoUrl: '/videos/m6_l1_risk.mp4' },
-      { id: 'l2', title: 'Trade Management', keyTakeaways: 'Scaling, partials, break-even moves.', videoUrl: '/videos/m6_l2_management.mp4' },
-      { id: 'l3', title: 'Journaling & Metrics', keyTakeaways: 'Win-rate vs. expectancy; how to Iterate.', videoUrl: '/videos/m6_l3_journal.mp4' },
+      {
+        id: 'l1',
+        title: 'Position Sizing & R-Multiple',
+        keyTakeaways: 'Fixed-fractional vs. Kelly vs. ICT’s 1 % rule.',
+        videoUrl: '/videos/m6_l1_risk.mp4',
+        markdownPath: 'risk-management-performance-tracking/l1.mdx',
+      },
+      {
+        id: 'l2',
+        title: 'Trade Management',
+        keyTakeaways: 'Scaling, partials, break-even moves.',
+        videoUrl: '/videos/m6_l2_management.mp4',
+        markdownPath: 'risk-management-performance-tracking/l2.mdx',
+      },
+      {
+        id: 'l3',
+        title: 'Journaling & Metrics',
+        keyTakeaways: 'Win-rate vs. expectancy; how to Iterate.',
+        videoUrl: '/videos/m6_l3_journal.mp4',
+        markdownPath: 'risk-management-performance-tracking/l3.mdx',
+      },
     ],
     quiz: [
       // Quiz was "..." - add specific questions later
