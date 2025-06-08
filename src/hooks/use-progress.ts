@@ -76,7 +76,10 @@ export function useProgress() {
           .from('progress')
           .update({ lessons: updated.lessons })
           .eq('user_id', session.user.id)
-          .catch(() => {})
+          .then(
+            () => {},
+            () => {}
+          )
       }
       return updated
     })
@@ -92,7 +95,10 @@ export function useProgress() {
           .from('progress')
           .update({ quizzes: updated.quizzes })
           .eq('user_id', session.user.id)
-          .catch(() => {})
+          .then(
+            () => {},
+            () => {}
+          )
       }
       return updated
     })
