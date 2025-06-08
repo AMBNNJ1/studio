@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { allModules } from '@/lib/modules-data';
 import type { Metadata } from 'next';
 
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function ModulesPage() {
+  const router = useRouter();
   return (
     <AppLayout>
       <section className="py-12 md:py-16">
@@ -29,7 +31,11 @@ export default function ModulesPage() {
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {allModules.map((module, index) => (
-              <Card key={module.id} className="flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card
+                key={module.id}
+                onClick={() => router.push(`/modules/${module.slug}`)}
+                className="cursor-pointer flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
                 <div className="relative h-48 w-full">
                   <Image
                     src={module.imagePlaceholder}
