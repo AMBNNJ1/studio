@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Award, Target, PlaySquare, FileQuestion, Users, ArrowRight, BookCopy } from 'lucide-react';
 import Image from 'next/image';
-import { allModules } from '@/lib/modules-data';
+import { useModules } from '@/hooks/use-modules';
 import { Badge } from '@/components/ui/badge';
 
 export default function HomeClient() {
@@ -53,7 +53,8 @@ export default function HomeClient() {
     },
   ];
 
-  const displayedModules = allModules.slice(0, 3);
+  const modules = useModules();
+  const displayedModules = modules.slice(0, 3);
 
   return (
     <AppLayout>

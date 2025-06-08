@@ -1,5 +1,5 @@
 import AppLayout from "@/components/layout/app-layout";
-import { allModules } from "@/lib/modules-data";
+import { fetchModule, fetchLessons, fetchLessonContent, fetchModules } from "@/lib/supabase-content";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,16 +14,15 @@ import { notFound } from "next/navigation";
 import QuizModal from "@/components/quiz-modal";
 import LessonProgress from "@/components/lesson-progress";
 import type { Metadata, ResolvingMetadata } from "next";
-import fs from "fs/promises";
-import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 
 export async function generateMetadata(
   { params }: any,
   _parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const currentModule = allModules.find((m) => m.slug === params.moduleSlug);
-  const lesson = currentModule?.lessons.find((l) => l.id === params.lessonId);
+  const currentModule = await fetchModule(params.moduleSlug)
+  const lessons = await fetchLessons(params.moduleSlug)
+  const lesson = lessons.find((l) => l.id === params.lessonId)
 
   if (!currentModule || !lesson) {
     notFound();
@@ -36,13 +35,15 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const paths = allModules.flatMap((mod) =>
-    mod.lessons.map((lesson) => ({
-      moduleSlug: mod.slug,
-      lessonId: lesson.id,
-    })),
-  );
-  return paths;
+  const modules = await fetchModules()
+  const params: { moduleSlug: string; lessonId: string }[] = []
+  for (const mod of modules) {
+    const lessons = await fetchLessons(mod.slug)
+    lessons.forEach((lesson) => {
+      params.push({ moduleSlug: mod.slug, lessonId: lesson.id })
+    })
+  }
+  return params
 }
 
 const TermDefinitionTable = ({
@@ -101,8 +102,9 @@ const ComparisonTable = ({
 );
 
 export default async function LessonPage({ params }: any) {
-  const currentModule = allModules.find((m) => m.slug === params.moduleSlug);
-  const lesson = currentModule?.lessons.find((l) => l.id === params.lessonId);
+  const currentModule = await fetchModule(params.moduleSlug)
+  const lessonList = await fetchLessons(params.moduleSlug)
+  const lesson = lessonList.find((l) => l.id === params.lessonId)
 
   if (!currentModule || !lesson) {
     notFound();
@@ -143,22 +145,17 @@ export default async function LessonPage({ params }: any) {
     },
   ];
 
-  let mdxContent: React.ReactNode | null = null;
-  if (lesson.markdownPath) {
-    const filePath = path.join(
-      process.cwd(),
-      'src/content/modules',
-      lesson.markdownPath
-    );
+  let mdxContent: React.ReactNode | null = null
+  const source = await fetchLessonContent(params.moduleSlug, params.lessonId)
+  if (source) {
     try {
-      const source = await fs.readFile(filePath, 'utf8');
       const mdx = await compileMDX({
         source,
         components: { TermDefinitionTable, ComparisonTable },
-      });
-      mdxContent = mdx.content;
+      })
+      mdxContent = mdx.content
     } catch (err) {
-      console.error('Failed to load MDX', err);
+      console.error('Failed to load MDX', err)
     }
   }
 

@@ -1,21 +1,22 @@
 'use client'
 import { Progress as ProgressBar } from '@/components/ui/progress'
-import { allModules } from '@/lib/modules-data'
+import { useModules } from '@/hooks/use-modules'
 import { useProgress } from '@/hooks/use-progress'
 
 export default function ProgressClient() {
   const { progress } = useProgress()
+  const modules = useModules()
 
-  const totalLessons = allModules.reduce((sum, m) => sum + m.lessons.length, 0)
-  const totalQuizzes = allModules.filter(m => m.quiz.length > 0).length
+  const totalLessons = modules.reduce((sum, m) => sum + (m.lessons?.length || 0), 0)
+  const totalQuizzes = modules.filter(m => (m.quiz?.length || 0) > 0).length
   const total = totalLessons + totalQuizzes
   const completed = progress.lessons.length + progress.quizzes.length
   const percent = total === 0 ? 0 : Math.round((completed / total) * 100)
 
   const lessonInfo = progress.lessons.map(id => {
     const [mod, les] = id.split(':')
-    const currentModule = allModules.find(m => m.slug === mod)
-    const lesson = currentModule?.lessons.find(l => l.id === les)
+    const currentModule = modules.find(m => m.slug === mod)
+    const lesson = currentModule?.lessons?.find(l => l.id === les)
     return lesson ? `${currentModule?.title.split('–')[1]?.trim() || currentModule?.title} - ${lesson.title}` : id
   })
 
@@ -43,7 +44,7 @@ export default function ProgressClient() {
         {progress.quizzes.length > 0 ? (
           <ul className="list-disc pl-5 space-y-1">
             {progress.quizzes.map(id => {
-              const currentModule = allModules.find(m => m.slug === id)
+              const currentModule = modules.find(m => m.slug === id)
               const title = currentModule?.title.split('–')[1]?.trim() || currentModule?.title || id
               return <li key={id}>{title}</li>
             })}

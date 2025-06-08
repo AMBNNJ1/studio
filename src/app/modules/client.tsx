@@ -6,9 +6,9 @@ import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { allModules } from '@/lib/modules-data'
+import type { ModuleDefinition } from '@/types'
 
-export default function ModulesClient() {
+export default function ModulesClient({ modules }: { modules: ModuleDefinition[] }) {
   const router = useRouter()
   return (
     <section className="py-12 md:py-16">
@@ -23,7 +23,7 @@ export default function ModulesClient() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {allModules.map((module, index) => (
+          {modules.map((module, index) => (
             <Card
               key={module.id}
               onClick={() => router.push(`/modules/${module.slug}`)}
