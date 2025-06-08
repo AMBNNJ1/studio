@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { createClient } from '@/utils/supabase/client'
+import { createClient } from '@utils/supabase/client'
 import type { Session, SupabaseClient } from '@supabase/supabase-js'
 
 export interface ProgressData {
