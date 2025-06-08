@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Award, Target, PlaySquare, FileQuestion, Users, ArrowRight, BookCopy } from 'lucide-react';
 import Image from 'next/image';
 import { allModules } from '@/lib/modules-data';
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const router = useRouter();
   const features = [
     {
       icon: <Target className="h-10 w-10 text-primary" />,
@@ -90,7 +92,11 @@ export default function Home() {
         </div>
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {displayedModules.map((module, index) => (
-            <Card key={module.id} className="flex flex-col overflow-hidden rounded-lg border bg-card shadow-sm hover:shadow-md transition-shadow duration-200">
+            <Card
+              key={module.id}
+              onClick={() => router.push(`/modules/${module.slug}`)}
+              className="cursor-pointer flex flex-col overflow-hidden rounded-lg border bg-card shadow-sm hover:shadow-md transition-shadow duration-200"
+            >
               <div className="relative h-48 w-full">
                 <Image
                   src={module.imagePlaceholder}
