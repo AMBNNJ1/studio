@@ -21,6 +21,7 @@ import LessonProgress from "@/components/lesson-progress";
 import type { Metadata, ResolvingMetadata } from "next";
 import fs from "fs/promises";
 import path from "path";
+import { compileMDX } from "next-mdx-remote/rsc";
 
 export async function generateMetadata(
   { params }: any,
@@ -176,7 +177,6 @@ export default async function LessonPage({ params }: any) {
     );
     try {
       const source = await fs.readFile(filePath, 'utf8');
-      const { compileMDX } = await import('next-mdx-remote/rsc');
       const mdx = await compileMDX({
         source,
         components: { TermDefinitionTable, ComparisonTable },
