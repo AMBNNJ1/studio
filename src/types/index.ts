@@ -4,7 +4,7 @@ export interface LessonDefinition {
   title: string;
   keyTakeaways: string;
   videoUrl: string;
-  // markdownPath?: string; // For future lesson content rendering
+  markdownPath?: string; // For Markdown-based lesson content
 }
 
 export interface QuizOptionDefinition {
