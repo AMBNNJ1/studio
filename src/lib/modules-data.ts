@@ -9,7 +9,13 @@ export const allModules: ModuleDefinition[] = [
     level: 'Beginner',
     description: 'Learn the absolute basics: how price is delivered, why candles form, and how ICT views trading sessions.',
     lessons: [
-      { id: 'l1', title: 'What Is ICT Trading?', keyTakeaways: 'History of Inner Circle Trader methodology; why liquidity matters more than indicators.', videoUrl: '/videos/m1_l1_intro.mp4' },
+      {
+        id: 'l1',
+        title: 'What Is ICT Trading?',
+        keyTakeaways: 'History of Inner Circle Trader methodology; why liquidity matters more than indicators.',
+        videoUrl: '/videos/m1_l1_intro.mp4',
+        markdownPath: 'price-action-foundations/l1.mdx',
+      },
       { id: 'l2', title: 'Anatomy of a Candlestick', keyTakeaways: 'Open, high, low, close; wicks = liquidity probes.', videoUrl: '/videos/m1_l2_candles.mp4' },
       { id: 'l3', title: 'Trading Sessions & Time-of-Day', keyTakeaways: 'Asia, London, New-York killzones; PD Arrays intro.', videoUrl: '/videos/m1_l3_sessions.mp4' },
       { id: 'l4', title: 'Candle Sentiment & Reversals', keyTakeaways: 'How body fill, wick length, and relative position signal bullish vs. bearish intent; basic pin-bar and engulfing patterns.', videoUrl: '/videos/m1_l4_sentiment.mp4' },
