@@ -34,6 +34,11 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 
 These values are required for the app to connect to your Supabase project.
 
+If you make changes to `.env.local` while the development server is running,
+stop and restart `npm run dev` so the new environment variables load. Should the
+variables still not appear, try removing the `.next` folder before starting the
+server again.
+
 ### Supabase Database
 
 User progress is stored in the Supabase `progress` table. Configure your
