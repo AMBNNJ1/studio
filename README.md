@@ -51,11 +51,13 @@ Run ESLint:
 npm run lint
 ```
 
-Run unit tests:
+Run unit tests with Jest:
 
 ```bash
 npm test
 ```
+
+The Jest setup uses the React Testing Library and a jsdom environment.
 
 ## Docs
 
