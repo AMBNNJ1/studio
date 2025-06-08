@@ -173,10 +173,6 @@ export default async function LessonPage({ params }: any) {
               Back to {currentModule.title.split("–")[1]?.trim() || currentModule.title}
             </Link>
           </Button>
-          <p className="text-sm font-medium text-primary mb-1">
-            {currentModule.title.split("–")[0]?.trim() || "Module"} - Lesson{" "}
-            {currentModule.lessons.findIndex((l) => l.id === lesson.id) + 1}
-          </p>
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             {lesson.title}
           </h1>
