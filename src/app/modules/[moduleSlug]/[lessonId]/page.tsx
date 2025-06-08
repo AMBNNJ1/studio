@@ -1,6 +1,5 @@
 import AppLayout from "@/components/layout/app-layout";
 import { allModules } from "@/lib/modules-data";
-import type { LessonDefinition, ModuleDefinition } from "@/types";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,12 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  AlertTriangle,
-  ArrowLeft,
-  ChevronLeft,
-  MonitorPlay,
-} from "lucide-react";
+import { ChevronLeft, MonitorPlay } from "lucide-react";
+import { notFound } from "next/navigation";
 import QuizModal from "@/components/quiz-modal";
 import LessonProgress from "@/components/lesson-progress";
 import type { Metadata, ResolvingMetadata } from "next";
@@ -31,9 +26,7 @@ export async function generateMetadata(
   const lesson = currentModule?.lessons.find((l) => l.id === params.lessonId);
 
   if (!currentModule || !lesson) {
-    return {
-      title: "Lesson Not Found | ICT Academy Lite",
-    };
+    notFound();
   }
 
   return {
@@ -112,25 +105,7 @@ export default async function LessonPage({ params }: any) {
   const lesson = currentModule?.lessons.find((l) => l.id === params.lessonId);
 
   if (!currentModule || !lesson) {
-    return (
-      <AppLayout>
-        <div className="flex flex-col items-center justify-center py-12 text-center">
-          <AlertTriangle className="h-16 w-16 text-destructive mb-4" />
-          <h1 className="text-3xl font-bold text-foreground mb-2">
-            Lesson Not Found
-          </h1>
-          <p className="text-muted-foreground mb-6">
-            Sorry, we couldn&apos;t find the lesson you were looking for.
-          </p>
-          <Button asChild variant="outline">
-            <Link href={`/modules/${params.moduleSlug || ""}`}>
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Module
-            </Link>
-          </Button>
-        </div>
-      </AppLayout>
-    );
+    notFound();
   }
 
 
