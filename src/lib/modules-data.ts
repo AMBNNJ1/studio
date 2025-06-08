@@ -63,7 +63,13 @@ export const allModules: ModuleDefinition[] = [
     lessons: [
       { id: 'l1', title: 'Market Structure Basics', keyTakeaways: 'Swing highs/lows, break of structure (BOS) vs. change of character (CHOCH).', videoUrl: '/videos/m2_l1_structure.mp4' },
       { id: 'l2', title: 'Liquidity Pools', keyTakeaways: 'Equal highs/lows, buy-side vs sell-side liquidity.', videoUrl: '/videos/m2_l2_liquidity_pools.mp4' },
-      { id: 'l3', title: 'Liquidity Sweeps', keyTakeaways: 'How false breakouts set up real moves.', videoUrl: '/videos/m2_l3_sweeps.mp4' },
+      {
+        id: 'l3',
+        title: 'Liquidity Sweeps',
+        keyTakeaways: 'How false breakouts set up real moves.',
+        videoUrl: '/videos/m2_l3_sweeps.mp4',
+        markdownPath: 'market-structure-liquidity/l3.mdx',
+      },
     ],
     quiz: [
       {
