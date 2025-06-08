@@ -51,6 +51,12 @@ Run ESLint:
 npm run lint
 ```
 
+Run unit tests:
+
+```bash
+npm test
+```
+
 ## Docs
 
 See [`docs/blueprint.md`](docs/blueprint.md) for a high-level design overview.
