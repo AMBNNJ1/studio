@@ -51,6 +51,14 @@ Run ESLint:
 npm run lint
 ```
 
+Run unit tests with Jest:
+
+```bash
+npm test
+```
+
+The Jest setup uses the React Testing Library and a jsdom environment.
+
 ## Docs
 
 See [`docs/blueprint.md`](docs/blueprint.md) for a high-level design overview.
