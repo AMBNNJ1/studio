@@ -124,7 +124,7 @@ export default function GlossarySearch() {
       {results && results.length === 0 && !isLoading && (
         <Card>
           <CardContent className="pt-6">
-            <p className="text-center text-muted-foreground">No results found for "{searchTerm}". Try a different term.</p>
+            <p className="text-center text-muted-foreground">No results found for &quot;{searchTerm}&quot;. Try a different term.</p>
           </CardContent>
         </Card>
       )}
@@ -132,7 +132,7 @@ export default function GlossarySearch() {
       {results && results.length > 0 && (
         <div className="space-y-6">
           <h2 className="font-headline text-xl font-semibold text-foreground">
-            Search Results for "{searchTerm}"
+            Search Results for &quot;{searchTerm}&quot;
           </h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {results.map((result, index) => (
@@ -154,7 +154,7 @@ export default function GlossarySearch() {
        {!results && !isLoading && !error && searchTerm && (
          <Card>
             <CardContent className="pt-6">
-              <p className="text-center text-muted-foreground">Enter a search term and click "Search" to see results.</p>
+              <p className="text-center text-muted-foreground">Enter a search term and click &quot;Search&quot; to see results.</p>
             </CardContent>
           </Card>
        )}

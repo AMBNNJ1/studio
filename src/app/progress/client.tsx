@@ -14,9 +14,9 @@ export default function ProgressClient() {
 
   const lessonInfo = progress.lessons.map(id => {
     const [mod, les] = id.split(':')
-    const module = allModules.find(m => m.slug === mod)
-    const lesson = module?.lessons.find(l => l.id === les)
-    return lesson ? `${module?.title.split('–')[1]?.trim() || module?.title} - ${lesson.title}` : id
+    const currentModule = allModules.find(m => m.slug === mod)
+    const lesson = currentModule?.lessons.find(l => l.id === les)
+    return lesson ? `${currentModule?.title.split('–')[1]?.trim() || currentModule?.title} - ${lesson.title}` : id
   })
 
   return (
@@ -43,8 +43,8 @@ export default function ProgressClient() {
         {progress.quizzes.length > 0 ? (
           <ul className="list-disc pl-5 space-y-1">
             {progress.quizzes.map(id => {
-              const module = allModules.find(m => m.slug === id)
-              const title = module?.title.split('–')[1]?.trim() || module?.title || id
+              const currentModule = allModules.find(m => m.slug === id)
+              const title = currentModule?.title.split('–')[1]?.trim() || currentModule?.title || id
               return <li key={id}>{title}</li>
             })}
           </ul>
