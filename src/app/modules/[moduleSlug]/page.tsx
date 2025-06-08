@@ -87,7 +87,7 @@ export default function ModuleDetailPage({ params }: any) {
         </header>
 
         <section className="mt-12"> {/* Added mt-12 for separation */}
-          <h2 className="font-headline text-3xl font-semibold tracking-tight text-foreground mb-10 border-b pb-5">
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground mb-10 border-b pb-5">
             Lessons
           </h2>
           {currentModule.lessons.length > 0 ? (
@@ -95,7 +95,7 @@ export default function ModuleDetailPage({ params }: any) {
               {currentModule.lessons.map((lesson, index) => (
                 <Card key={lesson.id} className="shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out rounded-xl overflow-hidden bg-card border border-border">
                   <CardHeader className="p-6">
-                    <CardTitle className="text-xl font-semibold text-foreground">
+                    <CardTitle className="text-xl font-bold text-foreground">
                       Lesson {index + 1}: {lesson.title}
                     </CardTitle>
                   </CardHeader>
