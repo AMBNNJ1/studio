@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
-import type { Session } from '@supabase/supabase-js'
+import { createClient } from '@/utils/supabase/client'
+import type { Session, SupabaseClient } from '@supabase/supabase-js'
 
 export interface ProgressData {
   lessons: string[]
@@ -29,6 +29,7 @@ function writeProgress(data: ProgressData) {
 export function useProgress() {
   const [progress, setProgress] = useState<ProgressData>({ lessons: [], quizzes: [] })
   const [session, setSession] = useState<Session | null>(null)
+  const supabase: SupabaseClient = createClient()
 
   useEffect(() => {
     setProgress(readProgress())
