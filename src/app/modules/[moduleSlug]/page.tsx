@@ -5,7 +5,8 @@ import type { ModuleDefinition } from '@/types';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertTriangle, ChevronLeft, BookOpen } from 'lucide-react';
+import { ChevronLeft, BookOpen } from 'lucide-react';
+import { notFound } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata, ResolvingMetadata } from 'next';
 
@@ -17,9 +18,7 @@ export async function generateMetadata(
   const currentModule = allModules.find((m) => m.slug === moduleSlug);
 
   if (!currentModule) {
-    return {
-      title: 'Module Not Found | ICT Academy Lite',
-    };
+    notFound();
   }
 
   const pageTitle = currentModule.title.split('–')[1]?.trim() || currentModule.title;
@@ -39,23 +38,7 @@ export default function ModuleDetailPage({ params }: any) {
   const currentModule = allModules.find((m) => m.slug === params.moduleSlug);
 
   if (!currentModule) {
-    return (
-      <AppLayout>
-        <div className="flex flex-col items-center justify-center py-12 text-center">
-          <AlertTriangle className="h-16 w-16 text-destructive mb-4" />
-          <h1 className="text-3xl font-bold text-foreground mb-2">Module Not Found</h1>
-          <p className="text-muted-foreground mb-6">
-            Sorry, we couldn&apos;t find the module you were looking for.
-          </p>
-          <Button asChild>
-            <Link href="/modules">
-              <ChevronLeft className="mr-2 h-4 w-4" />
-              Back to All Modules
-            </Link>
-          </Button>
-        </div>
-      </AppLayout>
-    );
+    notFound();
   }
 
   const displayTitle = currentModule.title.split('–')[1]?.trim() || currentModule.title;
