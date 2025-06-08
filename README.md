@@ -1,6 +1,6 @@
-# Firebase Studio
+# ICT Academy Lite
 
-This repository contains a starter project built with Next.js and Firebase.
+This repository contains a starter project built with Next.js and Supabase.
 
 ## Requirements
 
