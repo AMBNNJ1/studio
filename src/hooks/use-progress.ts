@@ -1,20 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { initFirebase } from '@/lib/firebase'
-import {
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  arrayUnion,
-  Firestore,
-} from 'firebase/firestore'
-import {
-  getAuth,
-  signInAnonymously,
-  onAuthStateChanged,
-  User,
-} from 'firebase/auth'
+import { supabase } from '@/lib/supabase'
+import type { Session } from '@supabase/supabase-js'
 
 export interface ProgressData {
   lessons: string[]
@@ -41,30 +28,41 @@ function writeProgress(data: ProgressData) {
 
 export function useProgress() {
   const [progress, setProgress] = useState<ProgressData>({ lessons: [], quizzes: [] })
-  const [db, setDb] = useState<Firestore | null>(null)
-  const [user, setUser] = useState<User | null>(null)
+  const [session, setSession] = useState<Session | null>(null)
 
   useEffect(() => {
     setProgress(readProgress())
-    const fb = initFirebase()
-    if (!fb) return
-    const auth = getAuth()
-    signInAnonymously(auth).catch(() => {})
-    const unsubscribe = onAuthStateChanged(auth, async current => {
-      if (!current) return
-      setUser(current)
-      setDb(fb.db)
-      const ref = doc(fb.db, 'users', current.uid, 'progress', 'data')
-      const snap = await getDoc(ref)
-      if (snap.exists()) {
-        const remote = snap.data() as ProgressData
+    const init = async () => {
+      const { data: { session: current } } = await supabase.auth.getSession()
+      let s = current
+      if (!s) {
+        const { data } = await supabase.auth.signInAnonymously()
+        s = data.session
+      }
+      if (!s) return
+      setSession(s)
+      const uid = s.user.id
+      const { data } = await supabase
+        .from('progress')
+        .select('*')
+        .eq('user_id', uid)
+        .single()
+      if (data) {
+        const remote: ProgressData = {
+          lessons: data.lessons || [],
+          quizzes: data.quizzes || [],
+        }
         setProgress(remote)
         writeProgress(remote)
       } else {
-        await setDoc(ref, { lessons: [], quizzes: [] })
+        await supabase.from('progress').insert({
+          user_id: uid,
+          lessons: [],
+          quizzes: [],
+        })
       }
-    })
-    return unsubscribe
+    }
+    init()
   }, [])
 
   const markLesson = (id: string) => {
@@ -72,9 +70,12 @@ export function useProgress() {
       if (prev.lessons.includes(id)) return prev
       const updated = { ...prev, lessons: [...prev.lessons, id] }
       writeProgress(updated)
-      if (db && user) {
-        const ref = doc(db, 'users', user.uid, 'progress', 'data')
-        updateDoc(ref, { lessons: arrayUnion(id) }).catch(() => {})
+      if (session) {
+        supabase
+          .from('progress')
+          .update({ lessons: updated.lessons })
+          .eq('user_id', session.user.id)
+          .catch(() => {})
       }
       return updated
     })
@@ -85,9 +86,12 @@ export function useProgress() {
       if (prev.quizzes.includes(id)) return prev
       const updated = { ...prev, quizzes: [...prev.quizzes, id] }
       writeProgress(updated)
-      if (db && user) {
-        const ref = doc(db, 'users', user.uid, 'progress', 'data')
-        updateDoc(ref, { quizzes: arrayUnion(id) }).catch(() => {})
+      if (session) {
+        supabase
+          .from('progress')
+          .update({ quizzes: updated.quizzes })
+          .eq('user_id', session.user.id)
+          .catch(() => {})
       }
       return updated
     })

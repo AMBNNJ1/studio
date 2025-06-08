@@ -25,22 +25,20 @@ The main entry point is `src/app/page.tsx`.
 
 ### Environment Setup
 
-Create a `.env.local` file at the project root and add your Firebase API keys:
+Create a `.env.local` file at the project root and add your Supabase API keys:
 
 ```bash
-NEXT_PUBLIC_FIREBASE_API_KEY=your-key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-domain.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-These values are required for the app to connect to Firestore and Auth.
+These values are required for the app to connect to your Supabase project.
 
-### Firestore
+### Supabase Database
 
-User progress is stored in Firestore at `users/{uid}/progress`. Configure your
-Firebase credentials in `.env.local` using the variables
-`NEXT_PUBLIC_FIREBASE_API_KEY`, `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` and
-`NEXT_PUBLIC_FIREBASE_PROJECT_ID`.
+User progress is stored in the Supabase `progress` table. Configure your
+Supabase credentials in `.env.local` using the variables
+`NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 
 ## Building
 
@@ -56,22 +54,10 @@ Start the compiled app using:
 npm start
 ```
 
-## Firebase Hosting
+## Deployment
 
-Authenticate with Firebase:
-
-```bash
-firebase login
-```
-
-Deploy the production build:
-
-```bash
-firebase deploy
-```
-
-This command uses [`apphosting.yaml`](apphosting.yaml) to configure scaling. If
-you prefer to run the server manually, build and start with:
+Deploy the production build anywhere that can run Node.js. Provide your Supabase
+environment variables in the host's configuration and run:
 
 ```bash
 npm run build
