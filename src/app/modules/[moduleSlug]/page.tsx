@@ -1,7 +1,6 @@
 
 import AppLayout from '@/components/layout/app-layout';
-import { allModules } from '@/lib/modules-data';
-import type { ModuleDefinition } from '@/types';
+import { fetchModule, fetchLessons, fetchModules } from '@/lib/supabase-content';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -14,35 +13,36 @@ export async function generateMetadata(
   { params }: any,
   _parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const moduleSlug = params.moduleSlug;
-  const currentModule = allModules.find((m) => m.slug === moduleSlug);
+  const moduleSlug = params.moduleSlug
+  const currentModule = await fetchModule(moduleSlug)
 
   if (!currentModule) {
-    notFound();
+    notFound()
   }
 
-  const pageTitle = currentModule.title.split('–')[1]?.trim() || currentModule.title;
+  const pageTitle = currentModule.title.split('–')[1]?.trim() || currentModule.title
   return {
     title: `${pageTitle} | ICT Academy Lite`,
     description: currentModule.description,
-  };
+  }
 }
 
 export async function generateStaticParams() {
-  return allModules.map((mod) => ({
+  const modules = await fetchModules()
+  return modules.map((mod) => ({
     moduleSlug: mod.slug,
-  }));
+  }))
 }
 
-export default function ModuleDetailPage({ params }: any) {
-  const currentModule = allModules.find((m) => m.slug === params.moduleSlug);
-
+export default async function ModuleDetailPage({ params }: any) {
+  const currentModule = await fetchModule(params.moduleSlug)
   if (!currentModule) {
-    notFound();
+    notFound()
   }
+  const lessons = await fetchLessons(params.moduleSlug)
 
-  const displayTitle = currentModule.title.split('–')[1]?.trim() || currentModule.title;
-  const moduleNumberString = currentModule.title.split('–')[0]?.trim();
+  const displayTitle = currentModule.title.split('–')[1]?.trim() || currentModule.title
+  const moduleNumberString = currentModule.title.split('–')[0]?.trim()
 
   return (
     <AppLayout>
@@ -73,9 +73,9 @@ export default function ModuleDetailPage({ params }: any) {
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground mb-10 border-b pb-5">
             Lessons
           </h2>
-          {currentModule.lessons.length > 0 ? (
+          {lessons.length > 0 ? (
             <div className="space-y-8">
-              {currentModule.lessons.map((lesson, index) => (
+              {lessons.map((lesson, index) => (
                 <Card key={lesson.id} className="shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out rounded-xl overflow-hidden bg-card border border-border">
                   <CardHeader className="p-6">
                     <CardTitle className="text-xl font-bold text-foreground">

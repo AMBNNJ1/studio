@@ -40,6 +40,12 @@ User progress is stored in the Supabase `progress` table. Configure your
 Supabase credentials in `.env.local` using the variables
 `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
 
+To upload the module and lesson content to your database, run:
+
+```bash
+npm run seed
+```
+
 ## Building
 
 Generate a production build with:
