@@ -104,7 +104,13 @@ export const allModules: ModuleDefinition[] = [
     level: 'Intermediate',
     description: 'Dive into institutional order flow—learn to spot, qualify, and trade order blocks.',
     lessons: [
-      { id: 'l1', title: 'Defining an Order Block', keyTakeaways: 'Last up/down candle before displacement.', videoUrl: '/videos/m3_l1_define_ob.mp4' },
+      {
+        id: 'l1',
+        title: 'Defining an Order Block',
+        keyTakeaways: 'Last up/down candle before displacement.',
+        videoUrl: '/videos/m3_l1_define_ob.mp4',
+        markdownPath: 'order-blocks-mitigation/l1.mdx',
+      },
       { id: 'l2', title: 'Bullish vs Bearish OB', keyTakeaways: 'Identification criteria, ideal entry zones.', videoUrl: '/videos/m3_l2_types.mp4' },
       { id: 'l3', title: 'Mitigation & Re-pricing', keyTakeaways: 'Why price returns to OB after imbalance.', videoUrl: '/videos/m3_l3_mitigation.mp4' },
     ],
