@@ -21,35 +21,30 @@ import LessonProgress from "@/components/lesson-progress";
 import type { Metadata, ResolvingMetadata } from "next";
 import fs from "fs/promises";
 import path from "path";
-import { compileMDX } from "next-mdx-remote/rsc";
-
-type Props = {
-  params: { moduleSlug: string; lessonId: string };
-};
 
 export async function generateMetadata(
-  { params }: Props,
+  { params }: any,
   _parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const module = allModules.find((m) => m.slug === params.moduleSlug);
-  const lesson = module?.lessons.find((l) => l.id === params.lessonId);
+  const currentModule = allModules.find((m) => m.slug === params.moduleSlug);
+  const lesson = currentModule?.lessons.find((l) => l.id === params.lessonId);
 
-  if (!module || !lesson) {
+  if (!currentModule || !lesson) {
     return {
       title: "Lesson Not Found | ICT Academy Lite",
     };
   }
 
   return {
-    title: `${lesson.title} | ${module.title.split("–")[1]?.trim() || module.title} | ICT Academy Lite`,
+    title: `${lesson.title} | ${currentModule.title.split("–")[1]?.trim() || currentModule.title} | ICT Academy Lite`,
     description: `Lesson: ${lesson.title}. ${lesson.keyTakeaways}`,
   };
 }
 
 export async function generateStaticParams() {
-  const paths = allModules.flatMap((module) =>
-    module.lessons.map((lesson) => ({
-      moduleSlug: module.slug,
+  const paths = allModules.flatMap((mod) =>
+    mod.lessons.map((lesson) => ({
+      moduleSlug: mod.slug,
       lessonId: lesson.id,
     })),
   );
@@ -111,11 +106,11 @@ const ComparisonTable = ({
   </div>
 );
 
-export default async function LessonPage({ params }: Props) {
-  const module = allModules.find((m) => m.slug === params.moduleSlug);
-  const lesson = module?.lessons.find((l) => l.id === params.lessonId);
+export default async function LessonPage({ params }: any) {
+  const currentModule = allModules.find((m) => m.slug === params.moduleSlug);
+  const lesson = currentModule?.lessons.find((l) => l.id === params.lessonId);
 
-  if (!module || !lesson) {
+  if (!currentModule || !lesson) {
     return (
       <AppLayout>
         <div className="flex flex-col items-center justify-center py-12 text-center">
@@ -124,7 +119,7 @@ export default async function LessonPage({ params }: Props) {
             Lesson Not Found
           </h1>
           <p className="text-muted-foreground mb-6">
-            Sorry, we couldn't find the lesson you were looking for.
+            Sorry, we couldn&apos;t find the lesson you were looking for.
           </p>
           <Button asChild variant="outline">
             <Link href={`/modules/${params.moduleSlug || ""}`}>
@@ -181,6 +176,7 @@ export default async function LessonPage({ params }: Props) {
     );
     try {
       const source = await fs.readFile(filePath, 'utf8');
+      const { compileMDX } = await import('next-mdx-remote/rsc');
       const mdx = await compileMDX({
         source,
         components: { TermDefinitionTable, ComparisonTable },
@@ -193,18 +189,18 @@ export default async function LessonPage({ params }: Props) {
 
   return (
     <AppLayout>
-      <LessonProgress id={`${module.slug}:${lesson.id}`} />
+      <LessonProgress id={`${currentModule.slug}:${lesson.id}`} />
       <div className="space-y-14 py-12 md:space-y-20 md:py-16">
         <div>
           <Button variant="outline" asChild className="mb-6 text-sm">
-            <Link href={`/modules/${module.slug}`}>
+            <Link href={`/modules/${currentModule.slug}`}>
               <ChevronLeft className="mr-2 h-4 w-4" />
-              Back to {module.title.split("–")[1]?.trim() || module.title}
+              Back to {currentModule.title.split("–")[1]?.trim() || currentModule.title}
             </Link>
           </Button>
           <p className="text-sm font-medium text-primary mb-1">
-            {module.title.split("–")[0]?.trim() || "Module"} - Lesson{" "}
-            {module.lessons.findIndex((l) => l.id === lesson.id) + 1}
+            {currentModule.title.split("–")[0]?.trim() || "Module"} - Lesson{" "}
+            {currentModule.lessons.findIndex((l) => l.id === lesson.id) + 1}
           </p>
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             {lesson.title}
@@ -246,9 +242,9 @@ export default async function LessonPage({ params }: Props) {
             </div>
           )}
         </article>
-        {module.quiz && module.quiz.length > 0 && (
+        {currentModule.quiz && currentModule.quiz.length > 0 && (
           <div className="pt-8 border-t">
-            <QuizModal quiz={module.quiz} moduleSlug={module.slug} />
+            <QuizModal quiz={currentModule.quiz} moduleSlug={currentModule.slug} />
           </div>
         )}
       </div>
